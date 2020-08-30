@@ -29,11 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<!-- hexo injector head_end start -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.1.1"><link rel="stylesheet" href="/css/prism-dark.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-dark.css" type="text/css"></head>
 
 
 <body>
@@ -657,7 +653,7 @@ train<span class="token punctuation">,</span> test <span class="token operator">
 fit4 <span class="token operator">=</span> sm<span class="token punctuation">.</span>formula<span class="token punctuation">.</span>ols<span class="token punctuation">(</span>formula<span class="token operator">=</span><span class="token string">'现金消费支出Y ~ 工资性收入X1 + 其他收入X2'</span><span class="token punctuation">,</span> data<span class="token operator">=</span>train<span class="token punctuation">)</span><span class="token punctuation">.</span>fit<span class="token punctuation">(</span><span class="token punctuation">)</span>
 test_X <span class="token operator">=</span> test<span class="token punctuation">.</span>drop<span class="token punctuation">(</span>labels<span class="token operator">=</span><span class="token string">'现金消费支出Y'</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
 pred <span class="token operator">=</span> fit4<span class="token punctuation">.</span>predict<span class="token punctuation">(</span>exog<span class="token operator">=</span>test_X<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'对比预测值和实际值：\n'</span><span class="token punctuation">,</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;'prediction': pred, 'real': test.现金消费支出Y&amp;#125;))</span></code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'对比预测值和实际值：\n'</span><span class="token punctuation">,</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'prediction'</span><span class="token punctuation">:</span> pred<span class="token punctuation">,</span> <span class="token string">'real'</span><span class="token punctuation">:</span> test<span class="token punctuation">.</span>现金消费支出Y<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 <h3 id="输出：-3"><a href="#输出：-3" class="headerlink" title="输出："></a>输出：</h3><pre class=" language-python"><code class="language-python">对比预测值和实际值：
        prediction     real
 <span class="token number">7</span>   <span class="token number">13874.648201</span>  <span class="token number">14161.7</span>
@@ -1218,7 +1214,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">16.8k</span>&nbsp;字
+                class="white-color">16.1k</span>&nbsp;字
             
             
             

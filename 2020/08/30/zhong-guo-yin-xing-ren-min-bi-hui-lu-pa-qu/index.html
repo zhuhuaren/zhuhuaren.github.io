@@ -29,11 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<!-- hexo injector head_end start -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.1.1"><link rel="stylesheet" href="/css/prism-dark.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-dark.css" type="text/css"></head>
 
 
 <body>
@@ -490,7 +486,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    813
+                    773
                 </div>
                 
 
@@ -525,33 +521,33 @@
 <span class="token keyword">import</span> xlrd
 <span class="token keyword">from</span> xlutils<span class="token punctuation">.</span>copy <span class="token keyword">import</span> copy
 
-proxy <span class="token operator">=</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
+proxy <span class="token operator">=</span> <span class="token punctuation">{</span>
     <span class="token string">'HTTP'</span><span class="token punctuation">:</span> <span class="token string">'HTTP://180.125.70.78:9999'</span><span class="token punctuation">,</span>
     <span class="token string">'HTTP'</span><span class="token punctuation">:</span> <span class="token string">'HTTP://117.90.4.230:9999'</span><span class="token punctuation">,</span>
     <span class="token string">'HTTP'</span><span class="token punctuation">:</span> <span class="token string">'HTTP://111.77.196.229:9999'</span><span class="token punctuation">,</span>
     <span class="token string">'HTTP'</span><span class="token punctuation">:</span> <span class="token string">'HTTP://111.177.183.57:9999'</span><span class="token punctuation">,</span>
     <span class="token string">'HTTP'</span><span class="token punctuation">:</span> <span class="token string">'HTTP://123.55.98.146:9999'</span><span class="token punctuation">,</span>
-        <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
+        <span class="token punctuation">}</span>
 row <span class="token operator">=</span> <span class="token number">0</span>
 <span class="token keyword">for</span> n <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment" spellcheck="true">#  抓取页码范围</span>
-    form_data <span class="token operator">=</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
+    form_data <span class="token operator">=</span> <span class="token punctuation">{</span>
         <span class="token string">'erectDate'</span><span class="token punctuation">:</span> <span class="token string">'2009-07-01'</span><span class="token punctuation">,</span>
         <span class="token string">'nothing'</span><span class="token punctuation">:</span> <span class="token string">'2019-07-08'</span><span class="token punctuation">,</span>
         <span class="token string">'pjname'</span><span class="token punctuation">:</span> <span class="token string">'1316'</span><span class="token punctuation">,</span>  <span class="token comment" spellcheck="true"># 美元兑人民币代码，修改此代码可获得其他货币兑人民币汇率</span>
         <span class="token string">'page'</span><span class="token punctuation">:</span> n<span class="token punctuation">,</span>
-    <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
+    <span class="token punctuation">}</span>
     url <span class="token operator">=</span> <span class="token string">'http://srh.bankofchina.com/search/whpj/search.jsp'</span>
     res <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token operator">=</span>url<span class="token punctuation">,</span> data<span class="token operator">=</span>form_data<span class="token punctuation">,</span>proxies<span class="token operator">=</span>proxy<span class="token punctuation">)</span>
     html <span class="token operator">=</span> etree<span class="token punctuation">.</span>HTML<span class="token punctuation">(</span>res<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
 
     <span class="token keyword">for</span> j <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">22</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        m_n <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[&amp;#123;&amp;#125;]/td[1]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        s_e_p <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[&amp;#123;&amp;#125;]/td[2]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        c_p <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[&amp;#123;&amp;#125;]/td[3]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        s_e_sp <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[&amp;#123;&amp;#125;]/td[4]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        c_s <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[&amp;#123;&amp;#125;]/td[5]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        bank_count_p <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[&amp;#123;&amp;#125;]/td[6]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        date <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[&amp;#123;&amp;#125;]/td[7]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        m_n <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[{}]/td[1]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        s_e_p <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[{}]/td[2]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        c_p <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[{}]/td[3]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        s_e_sp <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[{}]/td[4]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        c_s <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[{}]/td[5]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        bank_count_p <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[{}]/td[6]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        date <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[{}]/td[7]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
         row <span class="token operator">=</span> row <span class="token operator">+</span> <span class="token number">1</span>
         workbook <span class="token operator">=</span> xlrd<span class="token punctuation">.</span>open_workbook<span class="token punctuation">(</span><span class="token string">'money.xls'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 创建工作表</span>
         workbook_copy <span class="token operator">=</span> copy<span class="token punctuation">(</span>workbook<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 向工作表内追加内容</span>
@@ -571,7 +567,7 @@ row <span class="token operator">=</span> <span class="token number">0</span>
         worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span>row<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>bank_count_p<span class="token punctuation">)</span><span class="token punctuation">)</span>
         worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span>row<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>date<span class="token punctuation">)</span><span class="token punctuation">)</span>
         workbook_copy<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token string">'money.xls'</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'第&amp;#123;&amp;#125;页爬取完成...'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'第{}页爬取完成...'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
 time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span></code></pre>
 <blockquote>
 <p>获取数据的界面<br><img src="https://img-blog.csdnimg.cn/20190709123228488.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQyNTc4NA==,size_16,color_FFFFFF,t_70" alt="图1"></p>
@@ -1121,7 +1117,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">16.8k</span>&nbsp;字
+                class="white-color">16.1k</span>&nbsp;字
             
             
             
