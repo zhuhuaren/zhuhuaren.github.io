@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, 仁义">
+    <meta name="keywords" content="爬取人民币汇率—数据来源（中国银行网站）, 仁义">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | 仁义</title>
+    <title>爬取人民币汇率—数据来源（中国银行网站） | 仁义</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -309,15 +309,28 @@
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">爬取人民币汇率—数据来源（中国银行网站）</h1>
                 </div>
             </div>
         </div>
@@ -432,12 +445,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Python/">
+                                <span class="chip bg-color">Python</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%88%AC%E8%99%AB/">
+                                <span class="chip bg-color">爬虫</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Python/" class="post-category">
+                                Python
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -446,28 +476,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-08-29
+                    2020-08-30
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-08-29
+                    2020-08-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    73
+                    813
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -482,15 +512,76 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+                <h4 id="文章导语"><a href="#文章导语" class="headerlink" title="文章导语"></a>文章导语</h4><blockquote>
+<p>今年暑假系里给每个同学布置了一篇学年论文，就想着怎么也得弄点数据撑撑排面吧，一开始我是不想爬的，然后就在网上各种找接口，找了半天，不是不能用就是获取的数据只是实时的，无法获得历史数据，哎，既然没办法，就只能爬了，顺便就在一个群里问了一下端口的事，然后开始准备工作，等网页分析完了，开始敲代码的时候，又看了一下手机，有个道友说<code>tushare</code>里面有接口，虽然<code>tushare</code>用了也挺多次吧，但是没发现有汇率的接口啊，我又抱着希望去看了看，果不其然，还真有。但是回头一想，网页都分析完了，干脆写完得了。二话不说，写吧！</p>
+</blockquote>
+<h4 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#! /usr/bin/env/ python</span>
+<span class="token comment" spellcheck="true"># -*- coding:UTF-8 -*-</span>
+<span class="token comment" spellcheck="true"># Author: Zhu Huaren</span>
+
+<span class="token keyword">import</span> requests
+<span class="token keyword">from</span> lxml <span class="token keyword">import</span> etree
+<span class="token keyword">import</span> time
+<span class="token keyword">import</span> xlrd
+<span class="token keyword">from</span> xlutils<span class="token punctuation">.</span>copy <span class="token keyword">import</span> copy
+
+proxy <span class="token operator">=</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
+    <span class="token string">'HTTP'</span><span class="token punctuation">:</span> <span class="token string">'HTTP://180.125.70.78:9999'</span><span class="token punctuation">,</span>
+    <span class="token string">'HTTP'</span><span class="token punctuation">:</span> <span class="token string">'HTTP://117.90.4.230:9999'</span><span class="token punctuation">,</span>
+    <span class="token string">'HTTP'</span><span class="token punctuation">:</span> <span class="token string">'HTTP://111.77.196.229:9999'</span><span class="token punctuation">,</span>
+    <span class="token string">'HTTP'</span><span class="token punctuation">:</span> <span class="token string">'HTTP://111.177.183.57:9999'</span><span class="token punctuation">,</span>
+    <span class="token string">'HTTP'</span><span class="token punctuation">:</span> <span class="token string">'HTTP://123.55.98.146:9999'</span><span class="token punctuation">,</span>
+        <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
+row <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">for</span> n <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment" spellcheck="true">#  抓取页码范围</span>
+    form_data <span class="token operator">=</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
+        <span class="token string">'erectDate'</span><span class="token punctuation">:</span> <span class="token string">'2009-07-01'</span><span class="token punctuation">,</span>
+        <span class="token string">'nothing'</span><span class="token punctuation">:</span> <span class="token string">'2019-07-08'</span><span class="token punctuation">,</span>
+        <span class="token string">'pjname'</span><span class="token punctuation">:</span> <span class="token string">'1316'</span><span class="token punctuation">,</span>  <span class="token comment" spellcheck="true"># 美元兑人民币代码，修改此代码可获得其他货币兑人民币汇率</span>
+        <span class="token string">'page'</span><span class="token punctuation">:</span> n<span class="token punctuation">,</span>
+    <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
+    url <span class="token operator">=</span> <span class="token string">'http://srh.bankofchina.com/search/whpj/search.jsp'</span>
+    res <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token operator">=</span>url<span class="token punctuation">,</span> data<span class="token operator">=</span>form_data<span class="token punctuation">,</span>proxies<span class="token operator">=</span>proxy<span class="token punctuation">)</span>
+    html <span class="token operator">=</span> etree<span class="token punctuation">.</span>HTML<span class="token punctuation">(</span>res<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
+
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">22</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        m_n <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[&amp;#123;&amp;#125;]/td[1]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        s_e_p <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[&amp;#123;&amp;#125;]/td[2]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        c_p <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[&amp;#123;&amp;#125;]/td[3]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        s_e_sp <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[&amp;#123;&amp;#125;]/td[4]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        c_s <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[&amp;#123;&amp;#125;]/td[5]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        bank_count_p <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[&amp;#123;&amp;#125;]/td[6]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        date <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[&amp;#123;&amp;#125;]/td[7]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        row <span class="token operator">=</span> row <span class="token operator">+</span> <span class="token number">1</span>
+        workbook <span class="token operator">=</span> xlrd<span class="token punctuation">.</span>open_workbook<span class="token punctuation">(</span><span class="token string">'money.xls'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 创建工作表</span>
+        workbook_copy <span class="token operator">=</span> copy<span class="token punctuation">(</span>workbook<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 向工作表内追加内容</span>
+        worksheet <span class="token operator">=</span> workbook_copy<span class="token punctuation">.</span>get_sheet<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'货币名称'</span><span class="token punctuation">)</span>
+        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'现汇买入价'</span><span class="token punctuation">)</span>
+        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'现钞买入价'</span><span class="token punctuation">)</span>
+        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'现汇卖出价'</span><span class="token punctuation">)</span>
+        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token string">'现钞卖出价'</span><span class="token punctuation">)</span>
+        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token string">'中行折算价'</span><span class="token punctuation">)</span>
+        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token string">'发布时间'</span><span class="token punctuation">)</span>
+        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span>row<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>m_n<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 将列表格式转换为字符串</span>
+        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span>row<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>s_e_p<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span>row<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>c_p<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span>row<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>s_e_sp<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span>row<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>c_s<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span>row<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>bank_count_p<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span>row<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>date<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        workbook_copy<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token string">'money.xls'</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'第&amp;#123;&amp;#125;页爬取完成...'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span></code></pre>
+<blockquote>
+<p>获取数据的界面<br><img src="https://img-blog.csdnimg.cn/20190709123228488.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQyNTc4NA==,size_16,color_FFFFFF,t_70" alt="图1"></p>
+</blockquote>
+<blockquote>
+<p>获取的数据，我就先爬了1000多条，等用的时候再爬吧。<br><img src="https://img-blog.csdnimg.cn/20190709123629780.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQyNTc4NA==,size_16,color_FFFFFF,t_70" alt="图2"></p>
+</blockquote>
+<h4 id="文章结语"><a href="#文章结语" class="headerlink" title="文章结语"></a>文章结语</h4><blockquote>
+<p>最后我再说说我踩的坑吧，第一个就是在网页开发工具上复制的<code>xpath</code>路径竟然不能直接用，比如说这个把，复制<code>xpath</code>路径的时候，它会自动优化，把一些网页源码没有的节点自动补齐，当你用这个路径提取内容的时候肯定提取不出来。还有一个就是追加写入Excel，这个就不多说了吧。<br><strong>总结下来一句话：</strong><br>==<strong>只有当你踩的坑多了，你才有机会踩下一个坑，否则你连下一个坑都见不到。</strong>==</p>
+</blockquote>
 
             </div>
             <hr/>
@@ -516,7 +607,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zhuhuaren.github.io/2020/08/29/hello-world/">https://zhuhuaren.github.io/2020/08/29/hello-world/</a>
+                    <a href="https://zhuhuaren.github.io/2020/08/30/zhong-guo-yin-xing-ren-min-bi-hui-lu-pa-qu/">https://zhuhuaren.github.io/2020/08/30/zhong-guo-yin-xing-ren-min-bi-hui-lu-pa-qu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -553,7 +644,15 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/Python/">
+                                    <span class="chip bg-color">Python</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%88%AC%E8%99%AB/">
+                                    <span class="chip bg-color">爬虫</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -719,38 +818,54 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/08/29/faker-ku-shi-yong-fang-fa/">
+                <a href="/2020/08/30/zhong-guo-yin-xing-ren-min-bi-hui-lu-pa-qu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Faker库的使用方法">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="爬取人民币汇率—数据来源（中国银行网站）">
                         
-                        <span class="card-title">Faker库的使用方法</span>
+                        <span class="card-title">爬取人民币汇率—数据来源（中国银行网站）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Faker库使用方法[TOC]
-我们在开发中常常需要利用一些假数据来做测试,这种时候就可以使用 Faker 来伪造数据从而用来测试.
-Faker 是一个可以让你生成伪造数据的Python包。当你需要初始化数据库，创建美观的XML文档，不断产
+                            中国银行的汇率数据爬取
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-29
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-30
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            仁义
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Python/" class="post-category">
+                                    Python
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Python/">
+                        <span class="chip bg-color">Python</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%88%AC%E8%99%AB/">
+                        <span class="chip bg-color">爬虫</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -762,42 +877,48 @@ Faker 是一个可以让你生成伪造数据的Python包。当你需要初始�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/04/04/excel-han-shu/">
+                <a href="/2020/08/30/xian-xing-hui-gui-yu-ling-hui-gui-yi-ji-lasso-hui-gui-jie-guo-bi-jiao/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Excel函数">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="线性回归与岭回归以及LASSO回归结果比较">
                         
-                        <span class="card-title">Excel函数</span>
+                        <span class="card-title">线性回归与岭回归以及LASSO回归结果比较</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            函数的使用：
-
-注意格式的正确性。
-注意引用区域的正确性，引用区域错误会导致返回的结果出错或函数报错。
-注意相对引用和绝对引用的使用。
-
-
-
-=vlookup（查询值，查询区域，查询区域的列，0/1）
-
-说明：1为模糊匹配，0为精确匹配，省
+                            线性回归与岭回归以及LASSO回归结果的一般比较
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-30
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            仁义
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Python/" class="post-category">
+                                    Python
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Python/">
+                        <span class="chip bg-color">Python</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1002,7 +1123,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">6k</span>&nbsp;字
+                class="white-color">14.6k</span>&nbsp;字
             
             
             
