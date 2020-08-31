@@ -528,7 +528,7 @@ data<span class="token punctuation">.</span>head<span class="token punctuation">
 <pre class=" language-python"><code class="language-python">data <span class="token operator">=</span> data<span class="token operator">/</span>data<span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span>
 data<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p><img src="https://img-blog.csdnimg.cn/20200509213353773.png" alt="图2"></p>
-<p><strong>关联系数计算公式：</strong><br>$$<br>\xi_{i}(k)=\frac{\min_{i} \min_{k} \Delta_{i}(k)+\rho \max_{i} \max_{k} \Delta_{i}(k)}{\Delta_{i}(k)+\rho \max_{i} \max_{k} \Delta_{i}(k)}<br>$$</p>
+<p><strong>关联系数计算公式：</strong><br>$$<br>\xi_{i}(k)=\frac{\min_{i}\min_{k}\Delta_{i}(k)+\rho\max_{i}\max_{k} \Delta_{i}(k)}{\Delta_{i}(k)+\rho\max_{i}\max_{k}\Delta_{i}(k)}<br>$$</p>
 <p>$$<br>\Delta_{i}(k)=\left|y(k)-x_{i}(k)\right|<br>$$</p>
 <p>$x_i$为第$i$列数据；$k$为第$i$列中第$k$个值；$\rho$为分辨系数，取值为$0≤\rho≤1$，一般取$0.5$</p>
 <p><strong>关联度计算公式：</strong><br>$$<br>r_{i}=\frac{1}{n} \sum_{k=1}^{n} \xi_{i}(k), \quad k=1,2, \ldots n<br>$$</p>
