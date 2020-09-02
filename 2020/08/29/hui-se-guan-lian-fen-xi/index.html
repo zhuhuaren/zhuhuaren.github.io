@@ -510,44 +510,44 @@
             <div id="articleContent">
                 <blockquote>
 <p>对于两个系统之间的因素，其随时间或不同对象而变化的关联性大小的量度，称为关联度。在系统发展过程中，若两个因素变化的趋势具有一致性，即同步变化程度较高，即可谓二者关联程度较高；反之，则较低。因此，灰色关联分析方法，是根据因素之间发展趋势的相似或相异程度，亦即“灰色关联度”，作为衡量因素间关联程度的一种方法。这里要注意的一点是，灰色关联分析是描述因素之间发展趋势的相似或相异程度，也就是说这里不分正影响与负影响。</p>
-</blockquote>
-<h3 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h3><blockquote>
-<p>导入所需的库</p>
-</blockquote>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
-<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np</code></pre>
-<blockquote>
+<h3 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h3><p>导入所需的库</p>
+<pre class=" language-lang-python"><code class="language-lang-python">import pandas as pd
+import numpy as np
+</code></pre>
 <p>读入数据</p>
-</blockquote>
-<pre class=" language-python"><code class="language-python">data <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_excel<span class="token punctuation">(</span><span class="token string">"./diabetes.xlsx"</span><span class="token punctuation">)</span>
-data<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<p><img src="https://img-blog.csdnimg.cn/20200509213216439.png" alt="图1"></p>
-<blockquote>
-<p>进性数据预处理：无量纲化，在此用均值法处理。</p>
-</blockquote>
-<pre class=" language-python"><code class="language-python">data <span class="token operator">=</span> data<span class="token operator">/</span>data<span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span>
-data<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<pre class=" language-lang-python"><code class="language-lang-python">data = pd.read_excel("./diabetes.xlsx")
+data.head()
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20200509213216439.png" alt="图1"><br>进性数据预处理：无量纲化，在此用均值法处理。</p>
+<pre class=" language-lang-python"><code class="language-lang-python">data = data/data.mean()
+data.head()
+</code></pre>
 <p><img src="https://img-blog.csdnimg.cn/20200509213353773.png" alt="图2"></p>
-<p><strong>关联系数计算公式：</strong><br>$$<br>\xi_{i}(k)=\frac{\min_{i}\min_{k}\Delta_{i}(k)+\rho\max_{i}\max_{k} \Delta_{i}(k)}{\Delta_{i}(k)+\rho\max_{i}\max_{k}\Delta_{i}(k)}<br>$$</p>
-<p>$$<br>\Delta_{i}(k)=\left|y(k)-x_{i}(k)\right|<br>$$</p>
-<p>$x_i$为第$i$列数据；$k$为第$i$列中第$k$个值；$\rho$为分辨系数，取值为$0≤\rho≤1$，一般取$0.5$</p>
-<p><strong>关联度计算公式：</strong><br>$$<br>r_{i}=\frac{1}{n} \sum_{k=1}^{n} \xi_{i}(k), \quad k=1,2, \ldots n<br>$$</p>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 由于DataFrame和Series无法进行混合运算，在此将数据转换为ndarray,然后进行reshape才能够进行运算</span>
-y <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>data<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
-x <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>data<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># ρ取0.5</span>
-rho <span class="token operator">=</span> <span class="token number">0.5</span>
-delt_k <span class="token operator">=</span> np<span class="token punctuation">.</span>abs<span class="token punctuation">(</span>y<span class="token operator">-</span>x<span class="token punctuation">)</span>
+</blockquote>
+<p><strong>关联系数计算公式：</strong></p>
+<script type="math/tex; mode=display">
+\xi_{i}(k)=\frac{\min_{i}\min_{k}\Delta_{i}(k)+\rho\max_{i}\max_{k} \Delta_{i}(k)}{\Delta_{i}(k)+\rho\max_{i}\max_{k}\Delta_{i}(k)}</script><script type="math/tex; mode=display">
+\Delta_{i}(k)=\left|y(k)-x_{i}(k)\right|</script><p>$x_i$为第$i$列数据；$k$为第$i$列中第$k$个值；$\rho$为分辨系数，取值为$0≤\rho≤1$，一般取$0.5$</p>
+<p><strong>关联度计算公式：</strong></p>
+<script type="math/tex; mode=display">
+r_{i}=\frac{1}{n} \sum_{k=1}^{n} \xi_{i}(k), \quad k=1,2, \ldots n</script><pre class=" language-lang-python"><code class="language-lang-python"># 由于DataFrame和Series无法进行混合运算，在此将数据转换为ndarray,然后进行reshape才能够进行运算
+y = np.array(data.iloc[:,-1]).reshape(-1,1)
+x = np.array(data.iloc[:,:-1])
+# ρ取0.5
+rho = 0.5
+delt_k = np.abs(y-x)
 delt_k
-<span class="token comment" spellcheck="true"># 此最小值是二级最小值，在此相当于全局最小值，即整个delt_k中的最小值</span>
-mmin <span class="token operator">=</span> delt_k<span class="token punctuation">.</span>min<span class="token punctuation">(</span><span class="token punctuation">)</span>
-mmax <span class="token operator">=</span> delt_k<span class="token punctuation">.</span>max<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 计算ξ</span>
-xi_k <span class="token operator">=</span> <span class="token punctuation">(</span>mmin <span class="token operator">+</span> rho <span class="token operator">*</span> mmax<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token punctuation">(</span>delt_k <span class="token operator">+</span> rho <span class="token operator">*</span> mmax<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 按照行求均值</span>
-ri <span class="token operator">=</span> xi_k<span class="token punctuation">.</span>mean<span class="token punctuation">(</span>axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
-ri</code></pre>
-<pre class=" language-python"><code class="language-python">array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0.70049136</span><span class="token punctuation">,</span> <span class="token number">0.68669945</span><span class="token punctuation">,</span> <span class="token number">0.73271802</span><span class="token punctuation">,</span> <span class="token number">0.72497548</span><span class="token punctuation">,</span> <span class="token number">0.71074412</span><span class="token punctuation">,</span><span class="token number">0.70539507</span><span class="token punctuation">,</span> <span class="token number">0.65997075</span><span class="token punctuation">,</span> <span class="token number">0.7326652</span> <span class="token punctuation">,</span> <span class="token number">0.72569364</span><span class="token punctuation">,</span> <span class="token number">0.71694221</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+# 此最小值是二级最小值，在此相当于全局最小值，即整个delt_k中的最小值
+mmin = delt_k.min()
+mmax = delt_k.max()
+# 计算ξ
+xi_k = (mmin + rho * mmax) / (delt_k + rho * mmax)
+# 按照行求均值
+ri = xi_k.mean(axis=0)
+ri
+</code></pre>
+<pre class=" language-lang-python"><code class="language-lang-python">array([0.70049136, 0.68669945, 0.73271802, 0.72497548, 0.71074412,0.70539507, 0.65997075, 0.7326652 , 0.72569364, 0.71694221])
+</code></pre>
 <p><strong>以上的值即为各属性对应的关联度，由此可见：关联度最高的为BMI，关联度最低的为S3。</strong></p>
 <p><strong>参考资料：</strong><br><a href="https://download.csdn.net/download/weixin_43425784/12404508" target="_blank" rel="noopener">糖尿病数据</a><br><a href="https://www.zybuluo.com/notmylove/note/1505576" target="_blank" rel="noopener">灰色关联分析法（GRA）</a></p>
 
@@ -1351,7 +1351,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">28.4k</span>&nbsp;字
+                class="white-color">28.2k</span>&nbsp;字
             
             
             

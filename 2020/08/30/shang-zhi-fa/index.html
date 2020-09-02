@@ -514,46 +514,57 @@
 <h4 id="二、计算步骤"><a href="#二、计算步骤" class="headerlink" title="二、计算步骤"></a>二、计算步骤</h4><ol>
 <li><p>选取数据<br> 选取$m$个指标，共$n$个样本，则$X_{ij}$为第$i$个样本的第$j$个指标的数值，$i=1,2,3,…n;j=1,2,3…m.$</p>
 </li>
-<li><p>数据标准化处理<br> 各项指标的计量单位以及方向不统一的情况下，需要对对数据进行标准化，为了避免求熵值时对数无意义，可以为每个$0$值加上较小数量级的实数，如$0.01$.<br> （1）对于正向指标(越大越好的指标)<br> $$<br> X^{‘}=\frac{X_{ij}- Min(X_{ij})}{Max(X_{ij})-Min(X_{ij})}<br> $$<br> （2）对于负向指标(越小越好的指标)<br> $$<br> X^{‘}=\frac{Max(X_{ij})-X_{ij}}{Max(X_{ij})-Min(X_{ij})}<br> $$</p>
-</li>
+<li><p>数据标准化处理<br> 各项指标的计量单位以及方向不统一的情况下，需要对对数据进行标准化，为了避免求熵值时对数无意义，可以为每个$0$值加上较小数量级的实数，如$0.01$.<br> （1）对于正向指标(越大越好的指标)</p>
+<script type="math/tex; mode=display">
+ X^{'}=\frac{X_{ij}- Min(X_{ij})}{Max(X_{ij})-Min(X_{ij})}</script><p> （2）对于负向指标(越小越好的指标)</p>
+<script type="math/tex; mode=display">
+ X^{'}=\frac{Max(X_{ij})-X_{ij}}{Max(X_{ij})-Min(X_{ij})}</script></li>
 </ol>
-<ol start="3">
-<li>计算第$j$项指标下第$i$个样本占该指标的比重<br> 计算样本权重：<br>$$<br>P_{ij}=\frac{X_{ij}}{\sum_{i=1}^{n}X_{ij}}<br>$$</li>
+<ol>
+<li>计算第$j$项指标下第$i$个样本占该指标的比重<br> 计算样本权重：<script type="math/tex; mode=display">
+P_{ij}=\frac{X_{ij}}{\sum_{i=1}^{n}X_{ij}}</script></li>
 </ol>
-<ol start="4">
-<li><p>计算第$j$项指标的熵值<br> 计算指标熵值：<br>$$<br>e_j=-K*\sum_{i=1}^{n}(P_{ij}*ln(P_{ij})) \<br>K=\frac{1}{ln(n)}，其中n为样本个数。<br>$$</p>
-</li>
-<li><p>计算第$j$项指标的差异系数<br> 某项指标的信息效用值取决于该指标的信息熵$e_j$与$1$之间的差值，它的值直接影响权重的大小。信息效用值越大，对评价的重要性就越大，权重也就越大。<br>$$<br>d_j=1-e_j<br>$$</p>
-</li>
+<ol>
+<li><p>计算第$j$项指标的熵值<br> 计算指标熵值：</p>
+<script type="math/tex; mode=display">
+e_j=-K*\sum_{i=1}^{n}(P_{ij}*ln(P_{ij})) \\
+K=\frac{1}{ln(n)}，其中n为样本个数。</script></li>
+<li><p>计算第$j$项指标的差异系数<br> 某项指标的信息效用值取决于该指标的信息熵$e_j$与$1$之间的差值，它的值直接影响权重的大小。信息效用值越大，对评价的重要性就越大，权重也就越大。</p>
+<script type="math/tex; mode=display">
+d_j=1-e_j</script></li>
 </ol>
-<ol start="6">
-<li>计算评价指标权重<br> 利用熵值法估算各指标的权重，其本质是利用该指标信息的差异系数来计算，其差异系数越高，对评价的重要性就越大（或称权重越大，对评价结果的贡献就越大）<br> 第$j$项指标的权重：<br>$$<br>w_j=\frac{d_j}{\sum_{j=1}^md_j}<br>$$</li>
+<ol>
+<li>计算评价指标权重<br> 利用熵值法估算各指标的权重，其本质是利用该指标信息的差异系数来计算，其差异系数越高，对评价的重要性就越大（或称权重越大，对评价结果的贡献就越大）<br> 第$j$项指标的权重：<script type="math/tex; mode=display">
+w_j=\frac{d_j}{\sum_{j=1}^md_j}</script></li>
 </ol>
-<ol start="7">
-<li>计算各样本综合得分<br> $$<br> z_i=\sum_{j=1}^mw_jx_{ij}<br> $$<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
-<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
-<span class="token comment" spellcheck="true"># 读取数据</span>
-data <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_excel<span class="token punctuation">(</span><span class="token string">"./temp.xlsx"</span><span class="token punctuation">,</span> index_col<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-data<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<img src="https://img-blog.csdnimg.cn/2020063019235262.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQyNTc4NA==,size_16,color_FFFFFF,t_70" alt="图1"><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 正向指标标准化处理</span>
-data<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"cured_rate"</span><span class="token punctuation">,</span> <span class="token string">"StringencyIndex"</span><span class="token punctuation">,</span> <span class="token string">"GovernmentResponseIndex"</span><span class="token punctuation">,</span> <span class="token string">"ContainmentHealthIndex"</span><span class="token punctuation">,</span> 
-   <span class="token string">"EconomicSupportIndex"</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>data<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"cured_rate"</span><span class="token punctuation">,</span> <span class="token string">"StringencyIndex"</span><span class="token punctuation">,</span> <span class="token string">"GovernmentResponseIndex"</span><span class="token punctuation">,</span> <span class="token string">"ContainmentHealthIndex"</span><span class="token punctuation">,</span> 
-   <span class="token string">"EconomicSupportIndex"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">-</span>data<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"cured_rate"</span><span class="token punctuation">,</span> <span class="token string">"StringencyIndex"</span><span class="token punctuation">,</span> <span class="token string">"GovernmentResponseIndex"</span><span class="token punctuation">,</span> <span class="token string">"ContainmentHealthIndex"</span><span class="token punctuation">,</span> 
-   <span class="token string">"EconomicSupportIndex"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">.</span>min<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token punctuation">(</span>data<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"cured_rate"</span><span class="token punctuation">,</span> <span class="token string">"StringencyIndex"</span><span class="token punctuation">,</span> <span class="token string">"GovernmentResponseIndex"</span><span class="token punctuation">,</span> <span class="token string">"ContainmentHealthIndex"</span><span class="token punctuation">,</span> 
-   <span class="token string">"EconomicSupportIndex"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">.</span>max<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span>data<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"cured_rate"</span><span class="token punctuation">,</span> <span class="token string">"StringencyIndex"</span><span class="token punctuation">,</span> <span class="token string">"GovernmentResponseIndex"</span><span class="token punctuation">,</span> <span class="token string">"ContainmentHealthIndex"</span><span class="token punctuation">,</span><span class="token string">"EconomicSupportIndex"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">.</span>min<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 反向指标标准化处理</span>
-data<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"confirmed"</span><span class="token punctuation">,</span><span class="token string">"confirmed_rate"</span><span class="token punctuation">,</span><span class="token string">"dead_rate"</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>data<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"confirmed"</span><span class="token punctuation">,</span><span class="token string">"confirmed_rate"</span><span class="token punctuation">,</span><span class="token string">"dead_rate"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">.</span>max<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> data<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"confirmed"</span><span class="token punctuation">,</span><span class="token string">"confirmed_rate"</span><span class="token punctuation">,</span><span class="token string">"dead_rate"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token punctuation">(</span>data<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"confirmed"</span><span class="token punctuation">,</span><span class="token string">"confirmed_rate"</span><span class="token punctuation">,</span><span class="token string">"dead_rate"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">.</span>max<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span>data<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"confirmed"</span><span class="token punctuation">,</span><span class="token string">"confirmed_rate"</span><span class="token punctuation">,</span><span class="token string">"dead_rate"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">.</span>min<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 计算样本权重,data为标准化后的数据</span>
-p <span class="token operator">=</span> data<span class="token operator">/</span>data<span class="token punctuation">.</span>sum<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 计算指标熵值</span>
-K <span class="token operator">=</span> <span class="token number">1</span><span class="token operator">/</span>np<span class="token punctuation">.</span>log<span class="token punctuation">(</span>len<span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">)</span>
-e <span class="token operator">=</span> <span class="token operator">-</span>K<span class="token operator">*</span>np<span class="token punctuation">.</span>sum<span class="token punctuation">(</span>p<span class="token operator">*</span>np<span class="token punctuation">.</span>log<span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 计算差异系数</span>
-d <span class="token operator">=</span> <span class="token number">1</span><span class="token operator">-</span>e
-<span class="token comment" spellcheck="true"># 计算指标权重</span>
-w <span class="token operator">=</span> d<span class="token operator">/</span>d<span class="token punctuation">.</span>sum<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 计算综合得分</span>
-score <span class="token operator">=</span> <span class="token punctuation">(</span>w<span class="token operator">*</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>sum<span class="token punctuation">(</span>axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span></code></pre>
+<ol>
+<li>计算各样本综合得分<script type="math/tex; mode=display">
+ z_i=\sum_{j=1}^mw_jx_{ij}</script><h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><pre class=" language-lang-python"><code class="language-lang-python">import pandas as pd
+import numpy as np
+# 读取数据
+data = pd.read_excel("./temp.xlsx", index_col=[0])
+data.head()
+</code></pre>
+<img src="https://img-blog.csdnimg.cn/2020063019235262.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQyNTc4NA==,size_16,color_FFFFFF,t_70" alt="图1"><pre class=" language-lang-python"><code class="language-lang-python"># 正向指标标准化处理
+data[["cured_rate", "StringencyIndex", "GovernmentResponseIndex", "ContainmentHealthIndex", 
+   "EconomicSupportIndex"]] = (data[["cured_rate", "StringencyIndex", "GovernmentResponseIndex", "ContainmentHealthIndex", 
+   "EconomicSupportIndex"]]-data[["cured_rate", "StringencyIndex", "GovernmentResponseIndex", "ContainmentHealthIndex", 
+   "EconomicSupportIndex"]].min())/(data[["cured_rate", "StringencyIndex", "GovernmentResponseIndex", "ContainmentHealthIndex", 
+   "EconomicSupportIndex"]].max()-data[["cured_rate", "StringencyIndex", "GovernmentResponseIndex", "ContainmentHealthIndex","EconomicSupportIndex"]].min())
+# 反向指标标准化处理
+data[["confirmed","confirmed_rate","dead_rate"]] = (data[["confirmed","confirmed_rate","dead_rate"]].max() - data[["confirmed","confirmed_rate","dead_rate"]])/(data[["confirmed","confirmed_rate","dead_rate"]].max()-data[["confirmed","confirmed_rate","dead_rate"]].min())
+# 计算样本权重,data为标准化后的数据
+p = data/data.sum()
+# 计算指标熵值
+K = 1/np.log(len(p))
+e = -K*np.sum(p*np.log(p))
+# 计算差异系数
+d = 1-e
+# 计算指标权重
+w = d/d.sum()
+# 计算综合得分
+score = (w*data).sum(axis=1)
+</code></pre>
 </li>
 </ol>
 
@@ -1361,7 +1372,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">28.4k</span>&nbsp;字
+                class="white-color">28.2k</span>&nbsp;字
             
             
             

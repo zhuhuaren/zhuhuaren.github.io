@@ -479,14 +479,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-08-30
+                    2020-09-02
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    773
+                    766
                 </div>
                 
 
@@ -510,73 +510,65 @@
             <div id="articleContent">
                 <h4 id="文章导语"><a href="#文章导语" class="headerlink" title="文章导语"></a>文章导语</h4><blockquote>
 <p>今年暑假系里给每个同学布置了一篇学年论文，就想着怎么也得弄点数据撑撑排面吧，一开始我是不想爬的，然后就在网上各种找接口，找了半天，不是不能用就是获取的数据只是实时的，无法获得历史数据，哎，既然没办法，就只能爬了，顺便就在一个群里问了一下端口的事，然后开始准备工作，等网页分析完了，开始敲代码的时候，又看了一下手机，有个道友说<code>tushare</code>里面有接口，虽然<code>tushare</code>用了也挺多次吧，但是没发现有汇率的接口啊，我又抱着希望去看了看，果不其然，还真有。但是回头一想，网页都分析完了，干脆写完得了。二话不说，写吧！</p>
-</blockquote>
-<h4 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#! /usr/bin/env/ python</span>
-<span class="token comment" spellcheck="true"># -*- coding:UTF-8 -*-</span>
-<span class="token comment" spellcheck="true"># Author: Zhu Huaren</span>
-
-<span class="token keyword">import</span> requests
-<span class="token keyword">from</span> lxml <span class="token keyword">import</span> etree
-<span class="token keyword">import</span> time
-<span class="token keyword">import</span> xlrd
-<span class="token keyword">from</span> xlutils<span class="token punctuation">.</span>copy <span class="token keyword">import</span> copy
-
-proxy <span class="token operator">=</span> <span class="token punctuation">{</span>
-    <span class="token string">'HTTP'</span><span class="token punctuation">:</span> <span class="token string">'HTTP://180.125.70.78:9999'</span><span class="token punctuation">,</span>
-    <span class="token string">'HTTP'</span><span class="token punctuation">:</span> <span class="token string">'HTTP://117.90.4.230:9999'</span><span class="token punctuation">,</span>
-    <span class="token string">'HTTP'</span><span class="token punctuation">:</span> <span class="token string">'HTTP://111.77.196.229:9999'</span><span class="token punctuation">,</span>
-    <span class="token string">'HTTP'</span><span class="token punctuation">:</span> <span class="token string">'HTTP://111.177.183.57:9999'</span><span class="token punctuation">,</span>
-    <span class="token string">'HTTP'</span><span class="token punctuation">:</span> <span class="token string">'HTTP://123.55.98.146:9999'</span><span class="token punctuation">,</span>
-        <span class="token punctuation">}</span>
-row <span class="token operator">=</span> <span class="token number">0</span>
-<span class="token keyword">for</span> n <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment" spellcheck="true">#  抓取页码范围</span>
-    form_data <span class="token operator">=</span> <span class="token punctuation">{</span>
-        <span class="token string">'erectDate'</span><span class="token punctuation">:</span> <span class="token string">'2009-07-01'</span><span class="token punctuation">,</span>
-        <span class="token string">'nothing'</span><span class="token punctuation">:</span> <span class="token string">'2019-07-08'</span><span class="token punctuation">,</span>
-        <span class="token string">'pjname'</span><span class="token punctuation">:</span> <span class="token string">'1316'</span><span class="token punctuation">,</span>  <span class="token comment" spellcheck="true"># 美元兑人民币代码，修改此代码可获得其他货币兑人民币汇率</span>
-        <span class="token string">'page'</span><span class="token punctuation">:</span> n<span class="token punctuation">,</span>
-    <span class="token punctuation">}</span>
-    url <span class="token operator">=</span> <span class="token string">'http://srh.bankofchina.com/search/whpj/search.jsp'</span>
-    res <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token operator">=</span>url<span class="token punctuation">,</span> data<span class="token operator">=</span>form_data<span class="token punctuation">,</span>proxies<span class="token operator">=</span>proxy<span class="token punctuation">)</span>
-    html <span class="token operator">=</span> etree<span class="token punctuation">.</span>HTML<span class="token punctuation">(</span>res<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
-
-    <span class="token keyword">for</span> j <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">22</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        m_n <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[{}]/td[1]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        s_e_p <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[{}]/td[2]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        c_p <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[{}]/td[3]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        s_e_sp <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[{}]/td[4]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        c_s <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[{}]/td[5]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        bank_count_p <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[{}]/td[6]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        date <span class="token operator">=</span> html<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//tr[{}]/td[7]/text()'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        row <span class="token operator">=</span> row <span class="token operator">+</span> <span class="token number">1</span>
-        workbook <span class="token operator">=</span> xlrd<span class="token punctuation">.</span>open_workbook<span class="token punctuation">(</span><span class="token string">'money.xls'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 创建工作表</span>
-        workbook_copy <span class="token operator">=</span> copy<span class="token punctuation">(</span>workbook<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 向工作表内追加内容</span>
-        worksheet <span class="token operator">=</span> workbook_copy<span class="token punctuation">.</span>get_sheet<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'货币名称'</span><span class="token punctuation">)</span>
-        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'现汇买入价'</span><span class="token punctuation">)</span>
-        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'现钞买入价'</span><span class="token punctuation">)</span>
-        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'现汇卖出价'</span><span class="token punctuation">)</span>
-        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token string">'现钞卖出价'</span><span class="token punctuation">)</span>
-        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token string">'中行折算价'</span><span class="token punctuation">)</span>
-        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token string">'发布时间'</span><span class="token punctuation">)</span>
-        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span>row<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>m_n<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 将列表格式转换为字符串</span>
-        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span>row<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>s_e_p<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span>row<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>c_p<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span>row<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>s_e_sp<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span>row<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>c_s<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span>row<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>bank_count_p<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        worksheet<span class="token punctuation">.</span>write<span class="token punctuation">(</span>row<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>date<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        workbook_copy<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token string">'money.xls'</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'第{}页爬取完成...'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
-time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span></code></pre>
+<h4 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h4></blockquote>
+<pre class=" language-lang-python"><code class="language-lang-python"># -*- coding:UTF-8 -*-
+import requests
+from lxml import etree
+import time
+import xlrd
+from xlutils.copy import copy
+proxy = {
+    'HTTP': 'HTTP://180.125.70.78:9999',
+    'HTTP': 'HTTP://117.90.4.230:9999',
+    'HTTP': 'HTTP://111.77.196.229:9999',
+    'HTTP': 'HTTP://111.177.183.57:9999',
+    'HTTP': 'HTTP://123.55.98.146:9999',
+        }
+row = 0
+for n in range(1,50):  #  抓取页码范围
+    form_data = {
+        'erectDate': '2009-07-01',
+        'nothing': '2019-07-08',
+        'pjname': '1316',  # 美元兑人民币代码，修改此代码可获得其他货币兑人民币汇率
+        'page': n,
+    }
+    url = 'http://srh.bankofchina.com/search/whpj/search.jsp'
+    res = requests.post(url=url, data=form_data,proxies=proxy)
+    html = etree.HTML(res.text)
+    for j in range(2, 22):
+        m_n = html.xpath('//tr[{}]/td[1]/text()'.format(j))
+        s_e_p = html.xpath('//tr[{}]/td[2]/text()'.format(j))
+        c_p = html.xpath('//tr[{}]/td[3]/text()'.format(j))
+        s_e_sp = html.xpath('//tr[{}]/td[4]/text()'.format(j))
+        c_s = html.xpath('//tr[{}]/td[5]/text()'.format(j))
+        bank_count_p = html.xpath('//tr[{}]/td[6]/text()'.format(j))
+        date = html.xpath('//tr[{}]/td[7]/text()'.format(j))
+        row = row + 1
+        workbook = xlrd.open_workbook('money.xls')  # 创建工作表
+        workbook_copy = copy(workbook)  # 向工作表内追加内容
+        worksheet = workbook_copy.get_sheet(0)
+        worksheet.write(0, 0, '货币名称')
+        worksheet.write(0, 1, '现汇买入价')
+        worksheet.write(0, 2, '现钞买入价')
+        worksheet.write(0, 3, '现汇卖出价')
+        worksheet.write(0, 4, '现钞卖出价')
+        worksheet.write(0, 5, '中行折算价')
+        worksheet.write(0, 6, '发布时间')
+        worksheet.write(row, 0, ''.join(m_n))  # 将列表格式转换为字符串
+        worksheet.write(row, 1, ''.join(s_e_p))
+        worksheet.write(row, 2, ''.join(c_p))
+        worksheet.write(row, 3, ''.join(s_e_sp))
+        worksheet.write(row, 4, ''.join(c_s))
+        worksheet.write(row, 5, ''.join(bank_count_p))
+        worksheet.write(row, 6, ''.join(date))
+        workbook_copy.save('money.xls')
+    print('第{}页爬取完成...'.format(n))
+time.sleep(1)
+</code></pre>
 <blockquote>
 <p>获取数据的界面<br><img src="https://img-blog.csdnimg.cn/20190709123228488.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQyNTc4NA==,size_16,color_FFFFFF,t_70" alt="图1"></p>
-</blockquote>
-<blockquote>
 <p>获取的数据，我就先爬了1000多条，等用的时候再爬吧。<br><img src="https://img-blog.csdnimg.cn/20190709123629780.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQyNTc4NA==,size_16,color_FFFFFF,t_70" alt="图2"></p>
-</blockquote>
-<h4 id="文章结语"><a href="#文章结语" class="headerlink" title="文章结语"></a>文章结语</h4><blockquote>
-<p>最后我再说说我踩的坑吧，第一个就是在网页开发工具上复制的<code>xpath</code>路径竟然不能直接用，比如说这个把，复制<code>xpath</code>路径的时候，它会自动优化，把一些网页源码没有的节点自动补齐，当你用这个路径提取内容的时候肯定提取不出来。还有一个就是追加写入Excel，这个就不多说了吧。<br><strong>总结下来一句话：</strong><br>==<strong>只有当你踩的坑多了，你才有机会踩下一个坑，否则你连下一个坑都见不到。</strong>==</p>
+<h4 id="文章结语"><a href="#文章结语" class="headerlink" title="文章结语"></a>文章结语</h4><p>最后我再说说我踩的坑吧，第一个就是在网页开发工具上复制的<code>xpath</code>路径竟然不能直接用，比如说这个把，复制<code>xpath</code>路径的时候，它会自动优化，把一些网页源码没有的节点自动补齐，当你用这个路径提取内容的时候肯定提取不出来。还有一个就是追加写入Excel，这个就不多说了吧。<br><strong>总结下来一句话：</strong><br>==<strong>只有当你踩的坑多了，你才有机会踩下一个坑，否则你连下一个坑都见不到。</strong>==</p>
 </blockquote>
 
             </div>
@@ -1312,6 +1304,13 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 </main>
 
 
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
 
 
     <footer class="page-footer bg-color">
@@ -1380,7 +1379,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">28.4k</span>&nbsp;字
+                class="white-color">28.2k</span>&nbsp;字
             
             
             

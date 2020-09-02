@@ -507,23 +507,27 @@
                 <p>我们在开发中常常需要利用一些假数据来做测试,这种时候就可以使用 <code>Faker</code> 来伪造数据从而用来测试.</p>
 <p><a href="https://link.jianshu.com/?t=https://github.com/joke2k/faker" target="_blank" rel="noopener"><strong>Faker</strong></a> 是一个可以让你生成伪造数据的Python包。当你需要初始化数据库，创建美观的XML文档，不断产生数据来进行压力测试或者想从生产服务器上拉取匿名数据的时候，Faker将是你最棒的选择。</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>Faker库已经被提交到 <a href="https://link.jianshu.com/?t=https://pypi.python.org/pypi/Faker" target="_blank" rel="noopener"><strong>pip</strong></a>，可以通过 pip 工具直接安装。</p>
-<pre class=" language-python"><code class="language-python">pip install Faker</code></pre>
+<pre class=" language-lang-python"><code class="language-lang-python">pip install Faker
+</code></pre>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p><a href="https://faker.readthedocs.io/en/master/" target="_blank" rel="noopener"><strong>官方文档</strong></a></p>
 <p>faker 提供了一个工厂函数，用来创建数据。</p>
-<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> faker <span class="token keyword">import</span> Factory
-<span class="token operator">>></span><span class="token operator">></span> fake1 <span class="token operator">=</span> Factory<span class="token punctuation">.</span>create<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<pre class=" language-lang-python"><code class="language-lang-python">>>> from faker import Factory
+>>> fake1 = Factory.create()
+</code></pre>
 <p>当然，也提供一个Faker类来创建实例</p>
-<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> faker <span class="token keyword">import</span> Faker
-<span class="token operator">>></span><span class="token operator">></span> fake2 <span class="token operator">=</span> Faker<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> fake2<span class="token punctuation">.</span>name<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token string">'Audrey Robinson'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake2<span class="token punctuation">.</span>address<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token string">'4266 Fritz Shore\nLewischester, AL 24594-7593'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake2<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token string">'Odio porro unde sint aliquid beatae. Ex officiis porro nostrum laboriosam deleniti nisi. A aut molestiae ratione ipsam perspiciatis facere.\nDicta incidunt at deleniti recusandae accusamus quisquam.'</span></code></pre>
+<pre class=" language-lang-python"><code class="language-lang-python">>>> from faker import Faker
+>>> fake2 = Faker()
+>>> fake2.name()
+'Audrey Robinson'
+>>> fake2.address()
+'4266 Fritz Shore\nLewischester, AL 24594-7593'
+>>> fake2.text()
+'Odio porro unde sint aliquid beatae. Ex officiis porro nostrum laboriosam deleniti nisi. A aut molestiae ratione ipsam perspiciatis facere.\nDicta incidunt at deleniti recusandae accusamus quisquam.'
+</code></pre>
 <p>每次调用方法 <code>fake.name()</code> 都会产生不同的（随机）结果。这是因为 faker 向 <code>faker.Generator.method_name()</code> 调用了 <code>faker.Generator.format(method_name)</code>。</p>
 <h2 id="本地化"><a href="#本地化" class="headerlink" title="本地化"></a>本地化</h2><p>在用 <code>Faker()</code> 创建 faker 实例时，可以为实例指定本地化区域参数，默认为 ‘’n_US‘’因此生成的姓名、地址等都是美国的。<br>要生成中文伪造数据，只需：</p>
-<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> fake <span class="token operator">=</span> Faker<span class="token punctuation">(</span><span class="token string">"zh_CN"</span><span class="token punctuation">)</span></code></pre>
+<pre class=" language-lang-python"><code class="language-lang-python">>>> fake = Faker("zh_CN")
+</code></pre>
 <h2 id="方法介绍"><a href="#方法介绍" class="headerlink" title="方法介绍"></a>方法介绍</h2><p>如上面例子，每次调用 fake 实例的 <code>name()</code>方法时，都会产生不同随机姓名。fake 实例还有很多方法可用，这些方法分为以下几类：</p>
 <ul>
 <li>address 地址</li>
@@ -545,345 +549,370 @@
 <li>ssn 社会安全码(身份证号码)</li>
 <li>user_agent 用户代理</li>
 </ul>
-<h3 id="address-地址"><a href="#address-地址" class="headerlink" title="address 地址"></a>address 地址</h3><pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>country<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 国家</span>
-<span class="token string">'奥地利'</span> 
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>city<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 城市</span>
-<span class="token string">'郑州市'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>city_suffix<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 城市的后缀,中文是：市或县'市'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>address<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 地址</span>
-<span class="token string">'河北省巢湖县怀柔南宁路f座 169812'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>street_address<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 街道</span>
-<span class="token string">'邯郸路W座'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>street_name<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 街道名</span>
-<span class="token string">'合肥路'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>postcode<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 邮编</span>
-<span class="token string">'314548'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>latitude<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 维度</span>
-Decimal<span class="token punctuation">(</span><span class="token string">'68.0228435'</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>longitude<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 经度</span>
-Decimal<span class="token punctuation">(</span><span class="token string">'155.964341'</span><span class="token punctuation">)</span></code></pre>
-<h3 id="person-人物"><a href="#person-人物" class="headerlink" title="person 人物"></a>person 人物</h3><pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>name<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 姓名</span>
-<span class="token string">'单玉珍'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>last_name<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 姓</span>
-<span class="token string">'潘'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>first_name<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 名</span>
-<span class="token string">'琴'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>name_male<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 男性姓名</span>
-<span class="token string">'官平'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>last_name_male<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 男性姓</span>
-<span class="token string">'安'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>first_name_male<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 男性名</span>
-<span class="token string">'文'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>name_female<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 女性姓名</span>
-<span class="token string">'许颖'</span></code></pre>
-<h3 id="barcode-条码"><a href="#barcode-条码" class="headerlink" title="barcode 条码"></a>barcode 条码</h3><pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>ean8<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 8位条码</span>
-<span class="token string">'12771363'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>ean13<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 13位条码</span>
-<span class="token string">'9133134950963'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>ean<span class="token punctuation">(</span>length<span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 自定义位数条码,只能选8或者13</span>
-<span class="token string">'20417161'</span></code></pre>
-<h3 id="color-颜色"><a href="#color-颜色" class="headerlink" title="color  颜色"></a>color  颜色</h3><pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>hex_color<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 16进制表示的颜色</span>
-<span class="token string">'#671f6d'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>rgb_css_color<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># css用的rgb色</span>
-<span class="token string">'rgb(237,74,237)'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>rgb_color<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 表示rgb色的字符串</span>
-<span class="token string">'208,102,218'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>color_name<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 颜色名字</span>
-<span class="token string">'Brown'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>safe_hex_color<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">#安全16进制色</span>
-<span class="token string">'#ee4400'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>safe_color_name<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 安全颜色名字</span>
-<span class="token string">'maroon'</span></code></pre>
-<h3 id="company-公司"><a href="#company-公司" class="headerlink" title="company 公司"></a>company 公司</h3><pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>company<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 公司名</span>
-<span class="token string">'时空盒数字科技有限公司'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>company_suffix<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 公司名后缀</span>
-<span class="token string">'科技有限公司'</span></code></pre>
-<h3 id="credit-card-银行信用卡"><a href="#credit-card-银行信用卡" class="headerlink" title="credit_card 银行信用卡"></a>credit_card 银行信用卡</h3><pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>credit_card_number<span class="token punctuation">(</span>card_type<span class="token operator">=</span>None<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 卡号</span>
-<span class="token string">'375325478746231'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>credit_card_provider<span class="token punctuation">(</span>card_type<span class="token operator">=</span>None<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 卡的提供者</span>
-<span class="token string">'VISA 13 digit'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>credit_card_security_code<span class="token punctuation">(</span>card_type<span class="token operator">=</span>None<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 卡的安全密码</span>
-<span class="token string">'450'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>credit_card_expire<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 卡的有效期</span>
-<span class="token string">'04/22'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>credit_card_full<span class="token punctuation">(</span>card_type<span class="token operator">=</span>None<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 完整卡信息</span>
-<span class="token string">'Maestro\n秀芳 商\n502001016117 04/27\nCVV: 144\n'</span></code></pre>
-<h3 id="currency-货币"><a href="#currency-货币" class="headerlink" title="currency 货币"></a>currency 货币</h3><pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>currency_code<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 货币代码</span>
-<span class="token string">'HNL'</span></code></pre>
-<h3 id="date-time-时间日期"><a href="#date-time-时间日期" class="headerlink" title="date_time 时间日期"></a>date_time 时间日期</h3><pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>date_time<span class="token punctuation">(</span>tzinfo<span class="token operator">=</span>None<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 随机日期时间</span>
-datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">2001</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">18</span><span class="token punctuation">,</span> <span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">57</span><span class="token punctuation">,</span> <span class="token number">44</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>iso8601<span class="token punctuation">(</span>tzinfo<span class="token operator">=</span>None<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 以iso8601标准输出的日期</span>
-<span class="token string">'1973-11-16T22:58:37'</span>
+<h3 id="address-地址"><a href="#address-地址" class="headerlink" title="address 地址"></a>address 地址</h3><pre class=" language-lang-python"><code class="language-lang-python">>>> fake.country()  # 国家
+'奥地利' 
+>>> fake.city()  # 城市
+'郑州市'
+>>> fake.city_suffix()  # 城市的后缀,中文是：市或县'市'
+>>> fake.address()  # 地址
+'河北省巢湖县怀柔南宁路f座 169812'
+>>> fake.street_address()  # 街道
+'邯郸路W座'
+>>> fake.street_name()  # 街道名
+'合肥路'
+>>> fake.postcode()  # 邮编
+'314548'
+>>> fake.latitude()  # 维度
+Decimal('68.0228435')
+>>> fake.longitude()  # 经度
+Decimal('155.964341')
+</code></pre>
+<h3 id="person-人物"><a href="#person-人物" class="headerlink" title="person 人物"></a>person 人物</h3><pre class=" language-lang-python"><code class="language-lang-python">>>> fake.name() # 姓名
+'单玉珍'
+>>> fake.last_name() # 姓
+'潘'
+>>> fake.first_name() # 名
+'琴'
+>>> fake.name_male() # 男性姓名
+'官平'
+>>> fake.last_name_male() # 男性姓
+'安'
+>>> fake.first_name_male() # 男性名
+'文'
+>>> fake.name_female() # 女性姓名
+'许颖'
+</code></pre>
+<h3 id="barcode-条码"><a href="#barcode-条码" class="headerlink" title="barcode 条码"></a>barcode 条码</h3><pre class=" language-lang-python"><code class="language-lang-python">>>> fake.ean8()  # 8位条码
+'12771363'
+>>> fake.ean13()  # 13位条码
+'9133134950963'
+>>> fake.ean(length=8)  # 自定义位数条码,只能选8或者13
+'20417161'
+</code></pre>
+<h3 id="color-颜色"><a href="#color-颜色" class="headerlink" title="color  颜色"></a>color  颜色</h3><pre class=" language-lang-python"><code class="language-lang-python">>>> fake.hex_color() # 16进制表示的颜色
+'#671f6d'
+>>> fake.rgb_css_color() # css用的rgb色
+'rgb(237,74,237)'
+>>> fake.rgb_color()  # 表示rgb色的字符串
+'208,102,218'
+>>> fake.color_name() # 颜色名字
+'Brown'
+>>> fake.safe_hex_color()  #安全16进制色
+'#ee4400'
+>>> fake.safe_color_name() # 安全颜色名字
+'maroon'
+</code></pre>
+<h3 id="company-公司"><a href="#company-公司" class="headerlink" title="company 公司"></a>company 公司</h3><pre class=" language-lang-python"><code class="language-lang-python">>>> fake.company() # 公司名
+'时空盒数字科技有限公司'
+>>> fake.company_suffix() # 公司名后缀
+'科技有限公司'
+</code></pre>
+<h3 id="credit-card-银行信用卡"><a href="#credit-card-银行信用卡" class="headerlink" title="credit_card 银行信用卡"></a>credit_card 银行信用卡</h3><pre class=" language-lang-python"><code class="language-lang-python">>>> fake.credit_card_number(card_type=None) # 卡号
+'375325478746231'
+>>> fake.credit_card_provider(card_type=None) # 卡的提供者
+'VISA 13 digit'
+>>> fake.credit_card_security_code(card_type=None) # 卡的安全密码
+'450'
+>>> fake.credit_card_expire() # 卡的有效期
+'04/22'
+>>> fake.credit_card_full(card_type=None) # 完整卡信息
+'Maestro\n秀芳 商\n502001016117 04/27\nCVV: 144\n'
+</code></pre>
+<h3 id="currency-货币"><a href="#currency-货币" class="headerlink" title="currency 货币"></a>currency 货币</h3><pre class=" language-lang-python"><code class="language-lang-python">>>> fake.currency_code()  # 货币代码
+'HNL'
+</code></pre>
+<h3 id="date-time-时间日期"><a href="#date-time-时间日期" class="headerlink" title="date_time 时间日期"></a>date_time 时间日期</h3><pre class=" language-lang-python"><code class="language-lang-python">>>> fake.date_time(tzinfo=None) # 随机日期时间
+datetime.datetime(2001, 3, 18, 17, 57, 44)
+>>> fake.iso8601(tzinfo=None) # 以iso8601标准输出的日期
+'1973-11-16T22:58:37'
 
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>date_time_this_month<span class="token punctuation">(</span>before_now<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> after_now<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> tzinfo<span class="token operator">=</span>None<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 本月的某个日期</span>
-datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">2017</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">14</span><span class="token punctuation">,</span> <span class="token number">33</span><span class="token punctuation">,</span> <span class="token number">48</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>date_time_this_year<span class="token punctuation">(</span>before_now<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> after_now<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> tzinfo<span class="token operator">=</span>None<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 本年的某个日期</span>
-datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">2017</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">55</span><span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>date_time_this_decade<span class="token punctuation">(</span>before_now<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> after_now<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> tzinfo<span class="token operator">=</span>None<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 本年代内的一个日期</span>
-datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">2010</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">26</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">33</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>date_time_this_century<span class="token punctuation">(</span>before_now<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> after_now<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> tzinfo<span class="token operator">=</span>None<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 本世纪一个日期</span>
-datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">2015</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">21</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">,</span> <span class="token number">27</span><span class="token punctuation">,</span> <span class="token number">53</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>date_time_between<span class="token punctuation">(</span>start_date<span class="token operator">=</span><span class="token string">"-30y"</span><span class="token punctuation">,</span> end_date<span class="token operator">=</span><span class="token string">"now"</span><span class="token punctuation">,</span> tzinfo<span class="token operator">=</span>None<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 两个时间间的一个随机时间</span>
-datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">2005</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">)</span>
+>>> fake.date_time_this_month(before_now=True, after_now=False, tzinfo=None) # 本月的某个日期
+datetime.datetime(2017, 11, 1, 14, 33, 48)
+>>> fake.date_time_this_year(before_now=True, after_now=False, tzinfo=None) # 本年的某个日期
+datetime.datetime(2017, 3, 2, 13, 55, 31)
+>>> fake.date_time_this_decade(before_now=True, after_now=False, tzinfo=None)  # 本年代内的一个日期
+datetime.datetime(2010, 3, 26, 6, 33, 23)
+>>> fake.date_time_this_century(before_now=True, after_now=False, tzinfo=None)  # 本世纪一个日期
+datetime.datetime(2015, 7, 21, 19, 27, 53)
+>>> fake.date_time_between(start_date="-30y", end_date="now", tzinfo=None)  # 两个时间间的一个随机时间
+datetime.datetime(2005, 12, 3, 17, 17, 15)
 
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>timezone<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 时区</span>
-<span class="token string">'America/Guatemala'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>time<span class="token punctuation">(</span>pattern<span class="token operator">=</span><span class="token string">"%H:%M:%S"</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 时间（可自定义格式）</span>
-<span class="token string">'11:21:52'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>am_pm<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 随机上午下午</span>
-<span class="token string">'PM'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>month<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 随机月份</span>
-<span class="token string">'02'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>month_name<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 随机月份名字</span>
-<span class="token string">'August'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>year<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 随机年</span>
-<span class="token string">'1974'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>day_of_week<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 随机星期几</span>
-<span class="token string">'Sunday'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>day_of_month<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 随机月中某一天</span>
-<span class="token string">'02'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>time_delta<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 随机时间延迟</span>
-datetime<span class="token punctuation">.</span>timedelta<span class="token punctuation">(</span><span class="token number">13371</span><span class="token punctuation">,</span> <span class="token number">27637</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>date_object<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 随机日期对象</span>
-datetime<span class="token punctuation">.</span>date<span class="token punctuation">(</span><span class="token number">1983</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">26</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>time_object<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 随机时间对象</span>
-datetime<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">56</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>unix_time<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 随机unix时间（时间戳）</span>
-<span class="token number">1223246848</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>date<span class="token punctuation">(</span>pattern<span class="token operator">=</span><span class="token string">"%Y-%m-%d"</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 随机日期（可自定义格式）</span>
-<span class="token string">'1984-04-20'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>date_time_ad<span class="token punctuation">(</span>tzinfo<span class="token operator">=</span>None<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 公元后随机日期</span>
-datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">341</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">)</span></code></pre>
-<h3 id="file-文件"><a href="#file-文件" class="headerlink" title="file 文件"></a>file 文件</h3><pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>file_name<span class="token punctuation">(</span>category<span class="token operator">=</span><span class="token string">"image"</span><span class="token punctuation">,</span> extension<span class="token operator">=</span><span class="token string">"png"</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 文件名（指定文件类型和后缀名）</span>
-<span class="token string">'增加.png'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>file_name<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 随机生成各类型文件</span>
-<span class="token string">'提供.pdf'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>file_extension<span class="token punctuation">(</span>category<span class="token operator">=</span>None<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 文件后缀</span>
-<span class="token string">'txt'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>mime_type<span class="token punctuation">(</span>category<span class="token operator">=</span>None<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># mime-type</span>
-<span class="token string">'image/png'</span></code></pre>
-<h3 id="internet-互联网"><a href="#internet-互联网" class="headerlink" title="internet 互联网"></a>internet 互联网</h3><pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>ipv4<span class="token punctuation">(</span>network<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># ipv4地址</span>
-<span class="token string">'104.225.105.10'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>ipv6<span class="token punctuation">(</span>network<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># ipv6地址</span>
-<span class="token string">'dea6:ca11:39d0:b49f:fff1:82f1:bf88:698b'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>uri_path<span class="token punctuation">(</span>deep<span class="token operator">=</span>None<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># uri路径</span>
-<span class="token string">'search/categories'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>uri_extension<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># uri扩展名</span>
-<span class="token string">'.htm'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>uri<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># uri</span>
-<span class="token string">'https://www.wei.com/terms/'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>url<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># url</span>
-<span class="token string">'http://zheng.org/'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>image_url<span class="token punctuation">(</span>width<span class="token operator">=</span>None<span class="token punctuation">,</span> height<span class="token operator">=</span>None<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 图片url</span>
-<span class="token string">'https://www.lorempixel.com/700/990'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>domain_word<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 域名主体</span>
-<span class="token string">'hu'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>domain_name<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 域名</span>
-<span class="token string">'hu.cn'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>tld<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 域名后缀</span>
-<span class="token string">'com'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>user_name<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 用户名</span>
-<span class="token string">'xia13'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>user_agent<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># UA</span>
-<span class="token string">'Opera/8.33.(Windows NT 5.1; an-ES) Presto/2.9.171 Version/10.00'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>mac_address<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># MAC地址</span>
-<span class="token string">'d6:38:cc:2a:76:b2'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>safe_email<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 安全邮箱</span>
-<span class="token string">'mingli@example.net'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>free_email<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 免费邮箱</span>
-<span class="token string">'tao44@gmail.com'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>company_email<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 公司邮箱</span>
-<span class="token string">'jingzhong@wang.cn'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>email<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 邮箱</span>
-<span class="token string">'changjun@hao.com'</span></code></pre>
-<h3 id="job-工作"><a href="#job-工作" class="headerlink" title="job 工作"></a>job 工作</h3><pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>job<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#工作职位</span>
-<span class="token string">'Dealer'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>job<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token string">'Musician'</span></code></pre>
-<h3 id="lorem-乱数假文"><a href="#lorem-乱数假文" class="headerlink" title="lorem 乱数假文"></a>lorem 乱数假文</h3><pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>text<span class="token punctuation">(</span>max_nb_chars<span class="token operator">=</span><span class="token number">200</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 随机生成一篇文章</span>
-<span class="token string">'语言无法应用为什一点国内.要求完成如何世界电脑发布作品.经济不同教育个人科技全国.\n在线学生发布信息上海状态.\n联系一次通过其实介绍世界.增加也是使用成功那个.\n商品免费管理公司.留言自己这种内容.\n次数内容知道这样女人感觉.操作他的生产出现如何报告文章只有.\n个人文化中心不能发布最新.质量一下提高.感觉最大工具表示最后计划.这是还有次数结果其实特别.'</span>
+>>> fake.timezone() # 时区
+'America/Guatemala'
+>>> fake.time(pattern="%H:%M:%S") # 时间（可自定义格式）
+'11:21:52'
+>>> fake.am_pm() # 随机上午下午
+'PM'
+>>> fake.month() # 随机月份
+'02'
+>>> fake.month_name() # 随机月份名字
+'August'
+>>> fake.year() # 随机年
+'1974'
+>>> fake.day_of_week() # 随机星期几
+'Sunday'
+>>> fake.day_of_month() # 随机月中某一天
+'02'
+>>> fake.time_delta() # 随机时间延迟
+datetime.timedelta(13371, 27637)
+>>> fake.date_object()  # 随机日期对象
+datetime.date(1983, 1, 26)
+>>> fake.time_object() # 随机时间对象
+datetime.time(17, 8, 56)
+>>> fake.unix_time() # 随机unix时间（时间戳）
+1223246848
+>>> fake.date(pattern="%Y-%m-%d") # 随机日期（可自定义格式）
+'1984-04-20'
+>>> fake.date_time_ad(tzinfo=None)  # 公元后随机日期
+datetime.datetime(341, 9, 11, 8, 6, 9)
+</code></pre>
+<h3 id="file-文件"><a href="#file-文件" class="headerlink" title="file 文件"></a>file 文件</h3><pre class=" language-lang-python"><code class="language-lang-python">>>> fake.file_name(category="image", extension="png") # 文件名（指定文件类型和后缀名）
+'增加.png'
+>>> fake.file_name() # 随机生成各类型文件
+'提供.pdf'
+>>> fake.file_extension(category=None) # 文件后缀
+'txt'
+>>> fake.mime_type(category=None) # mime-type
+'image/png'
+</code></pre>
+<h3 id="internet-互联网"><a href="#internet-互联网" class="headerlink" title="internet 互联网"></a>internet 互联网</h3><pre class=" language-lang-python"><code class="language-lang-python">>>> fake.ipv4(network=False)  # ipv4地址
+'104.225.105.10'
+>>> fake.ipv6(network=False)  # ipv6地址
+'dea6:ca11:39d0:b49f:fff1:82f1:bf88:698b'
+>>> fake.uri_path(deep=None) # uri路径
+'search/categories'
+>>> fake.uri_extension() # uri扩展名
+'.htm'
+>>> fake.uri() # uri
+'https://www.wei.com/terms/'
+>>> fake.url() # url
+'http://zheng.org/'
+>>> fake.image_url(width=None, height=None)  # 图片url
+'https://www.lorempixel.com/700/990'
+>>> fake.domain_word() # 域名主体
+'hu'
+>>> fake.domain_name() # 域名
+'hu.cn'
+>>> fake.tld() # 域名后缀
+'com'
+>>> fake.user_name() # 用户名
+'xia13'
+>>> fake.user_agent() # UA
+'Opera/8.33.(Windows NT 5.1; an-ES) Presto/2.9.171 Version/10.00'
+>>> fake.mac_address() # MAC地址
+'d6:38:cc:2a:76:b2'
+>>> fake.safe_email() # 安全邮箱
+'mingli@example.net'
+>>> fake.free_email() # 免费邮箱
+'tao44@gmail.com'
+>>> fake.company_email()  # 公司邮箱
+'jingzhong@wang.cn'
+>>> fake.email() # 邮箱
+'changjun@hao.com'
+</code></pre>
+<h3 id="job-工作"><a href="#job-工作" class="headerlink" title="job 工作"></a>job 工作</h3><pre class=" language-lang-python"><code class="language-lang-python">>>> fake.job()#工作职位
+'Dealer'
+>>> fake.job()
+'Musician'
+</code></pre>
+<h3 id="lorem-乱数假文"><a href="#lorem-乱数假文" class="headerlink" title="lorem 乱数假文"></a>lorem 乱数假文</h3><pre class=" language-lang-python"><code class="language-lang-python">>>> fake.text(max_nb_chars=200) # 随机生成一篇文章
+'语言无法应用为什一点国内.要求完成如何世界电脑发布作品.经济不同教育个人科技全国.\n在线学生发布信息上海状态.\n联系一次通过其实介绍世界.增加也是使用成功那个.\n商品免费管理公司.留言自己这种内容.\n次数内容知道这样女人感觉.操作他的生产出现如何报告文章只有.\n个人文化中心不能发布最新.质量一下提高.感觉最大工具表示最后计划.这是还有次数结果其实特别.'
 
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>word<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 随机单词</span>
-<span class="token string">'能力'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>words<span class="token punctuation">(</span>nb<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 随机生成几个字</span>
-<span class="token punctuation">[</span><span class="token string">'国家'</span><span class="token punctuation">,</span> <span class="token string">'经营'</span><span class="token punctuation">,</span> <span class="token string">'结果'</span><span class="token punctuation">]</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>sentence<span class="token punctuation">(</span>nb_words<span class="token operator">=</span><span class="token number">6</span><span class="token punctuation">,</span> variable_nb_words<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 随机生成一个句子</span>
-<span class="token string">'重要更多我们作品地方增加.'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>sentences<span class="token punctuation">(</span>nb<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 随机生成几个句子</span>
-<span class="token punctuation">[</span><span class="token string">'制作上海学生.'</span><span class="token punctuation">,</span> <span class="token string">'方式汽车一样技术帮助欢迎.'</span><span class="token punctuation">,</span> <span class="token string">'说明一种深圳经营电话帖子.'</span><span class="token punctuation">]</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>paragraph<span class="token punctuation">(</span>nb_sentences<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span> variable_nb_sentences<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 随机生成一段文字(字符串)</span>
-<span class="token string">'非常环境位置有限发展首页行业.情况对于出现部门这种觉得.产品以后因为虽然由于日本不同.'</span>
+>>> fake.word() # 随机单词
+'能力'
+>>> fake.words(nb=3)  # 随机生成几个字
+['国家', '经营', '结果']
+>>> fake.sentence(nb_words=6, variable_nb_words=True)  # 随机生成一个句子
+'重要更多我们作品地方增加.'
+>>> fake.sentences(nb=3) # 随机生成几个句子
+['制作上海学生.', '方式汽车一样技术帮助欢迎.', '说明一种深圳经营电话帖子.']
+>>> fake.paragraph(nb_sentences=3, variable_nb_sentences=True)  # 随机生成一段文字(字符串)
+'非常环境位置有限发展首页行业.情况对于出现部门这种觉得.产品以后因为虽然由于日本不同.'
 
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>paragraphs<span class="token punctuation">(</span>nb<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 随机生成成几段文字(列表)</span>
-<span class="token punctuation">[</span><span class="token string">'就是发布要求有关这里国际.美国设备深圳经营.首页也是支持报告.'</span><span class="token punctuation">,</span> <span class="token string">'决定可是只有发现开始一直.最后有些项目正在深圳关系决定.下载注册图片更多进行他的那些.'</span><span class="token punctuation">,</span> <span class="token string">'必须他们发生数据准备联系.同时这样内容学校精华.'</span><span class="token punctuation">]</span></code></pre>
-<h3 id="misc-杂项"><a href="#misc-杂项" class="headerlink" title="misc 杂项"></a>misc 杂项</h3><pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>binary<span class="token punctuation">(</span>length<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 随机二进制字符串(可指定长度)</span>
-b<span class="token string">'U\xa9@\x1e\x96\xe7\xca\x82\x14f'</span>
+>>> fake.paragraphs(nb=3)  # 随机生成成几段文字(列表)
+['就是发布要求有关这里国际.美国设备深圳经营.首页也是支持报告.', '决定可是只有发现开始一直.最后有些项目正在深圳关系决定.下载注册图片更多进行他的那些.', '必须他们发生数据准备联系.同时这样内容学校精华.']
+</code></pre>
+<h3 id="misc-杂项"><a href="#misc-杂项" class="headerlink" title="misc 杂项"></a>misc 杂项</h3><pre class=" language-lang-python"><code class="language-lang-python">>>> fake.binary(length=10)  # 随机二进制字符串(可指定长度)
+b'U\xa9@\x1e\x96\xe7\xca\x82\x14f'
 
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>language_code<span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 随机语言代码</span>
-<span class="token string">'tg'</span>
+>>> fake.language_code()   # 随机语言代码
+'tg'
 
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>md5<span class="token punctuation">(</span>raw_output<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 随机md5，16进制字符串</span>
-<span class="token string">'cc4feebe419791332bbcff5e0fdf084a'</span>
+>>> fake.md5(raw_output=False)  # 随机md5，16进制字符串
+'cc4feebe419791332bbcff5e0fdf084a'
 
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>sha1<span class="token punctuation">(</span>raw_output<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 随机sha1，16进制字符串</span>
-<span class="token string">'8ac0e9980f880860b6e45ae6fd257cc847b7ae8d'</span>
+>>> fake.sha1(raw_output=False) # 随机sha1，16进制字符串
+'8ac0e9980f880860b6e45ae6fd257cc847b7ae8d'
 
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>sha256<span class="token punctuation">(</span>raw_output<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 随机sha256，16进制字符串</span>
-<span class="token string">'033151f173f4a389e38e7df2363d89741f752c474e7bdfa2ee0a794bf0b505b5'</span>
+>>> fake.sha256(raw_output=False)   # 随机sha256，16进制字符串
+'033151f173f4a389e38e7df2363d89741f752c474e7bdfa2ee0a794bf0b505b5'
 
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>boolean<span class="token punctuation">(</span>chance_of_getting_true<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 随机真假值(得到True的几率是50%)</span>
-<span class="token boolean">False</span>
+>>> fake.boolean(chance_of_getting_true=50) # 随机真假值(得到True的几率是50%)
+False
 
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>null_boolean<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 随机真假值和null</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>null_boolean<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token boolean">True</span>
+>>> fake.null_boolean() # 随机真假值和null
+>>> fake.null_boolean()
+True
 
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>password<span class="token punctuation">(</span>length<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span> special_chars<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> digits<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> upper_case<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> lower_case<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 随机密码（可指定密码策略）</span>
-<span class="token string">'F%722TJg_U'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>locale<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 随机本地代码</span>
-<span class="token string">'hy_AM'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>uuid4<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 随机uuid</span>
-<span class="token string">'a50d17e7-bc4f-37a3-27b3-04a24fdd0055'</span>
-<span class="token operator">>></span><span class="token operator">></span></code></pre>
-<h3 id="phone-number-电话号码"><a href="#phone-number-电话号码" class="headerlink" title="phone_number 电话号码"></a>phone_number 电话号码</h3><pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>phone_number<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 手机号码</span>
-<span class="token string">'13334603608'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>phonenumber_prefix<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 运营商号段，手机号码前三位</span>
-<span class="token number">158</span></code></pre>
-<h3 id="python-python数据"><a href="#python-python数据" class="headerlink" title="python python数据"></a>python python数据</h3><pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>pyint<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 随机int</span>
-<span class="token number">7775</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>pyfloat<span class="token punctuation">(</span>left_digits<span class="token operator">=</span>None<span class="token punctuation">,</span> right_digits<span class="token operator">=</span>None<span class="token punctuation">,</span> positive<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 浮点数</span>
-<span class="token operator">-</span><span class="token number">84901.5586333</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>pydecimal<span class="token punctuation">(</span>left_digits<span class="token operator">=</span>None<span class="token punctuation">,</span> right_digits<span class="token operator">=</span>None<span class="token punctuation">,</span> positive<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 随机高精度数</span>
-Decimal<span class="token punctuation">(</span><span class="token string">'-12273687068527.0'</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>pystr<span class="token punctuation">(</span>min_chars<span class="token operator">=</span>None<span class="token punctuation">,</span> max_chars<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 随机字符串（可指定长度）</span>
-<span class="token string">'cblutNKFIyegfcHPrjzx'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>pybool<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 随机bool值</span>
-<span class="token boolean">True</span>
+>>> fake.password(length=10, special_chars=True, digits=True, upper_case=True, lower_case=True) # 随机密码（可指定密码策略）
+'F%722TJg_U'
+>>> fake.locale() # 随机本地代码
+'hy_AM'
+>>> fake.uuid4() # 随机uuid
+'a50d17e7-bc4f-37a3-27b3-04a24fdd0055'
+>>>
+</code></pre>
+<h3 id="phone-number-电话号码"><a href="#phone-number-电话号码" class="headerlink" title="phone_number 电话号码"></a>phone_number 电话号码</h3><pre class=" language-lang-python"><code class="language-lang-python">>>> fake.phone_number() # 手机号码
+'13334603608'
+>>> fake.phonenumber_prefix() # 运营商号段，手机号码前三位
+158
+</code></pre>
+<h3 id="python-python数据"><a href="#python-python数据" class="headerlink" title="python python数据"></a>python python数据</h3><pre class=" language-lang-python"><code class="language-lang-python">>>> fake.pyint()  # 随机int
+7775
+>>> fake.pyfloat(left_digits=None, right_digits=None, positive=False)  # 浮点数
+-84901.5586333
+>>> fake.pydecimal(left_digits=None, right_digits=None, positive=False)  # 随机高精度数
+Decimal('-12273687068527.0')
+>>> fake.pystr(min_chars=None, max_chars=20)  # 随机字符串（可指定长度）
+'cblutNKFIyegfcHPrjzx'
+>>> fake.pybool()  # 随机bool值
+True
 
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>pyiterable<span class="token punctuation">(</span>nb_elements<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span> variable_nb_elements<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 随机iterable</span>
-<span class="token punctuation">[</span><span class="token string">'ODfeVvcbAjPDBGwzljQw'</span><span class="token punctuation">,</span> <span class="token string">'https://www.tan.cn/list/category/homepage.php'</span><span class="token punctuation">,</span> <span class="token string">'YQlrsFkBieyKYaXlCljJ'</span><span class="token punctuation">,</span> Decimal<span class="token punctuation">(</span><span class="token string">'42778240911787.2'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Decimal<span class="token punctuation">(</span><span class="token string">'957411812.6383'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'TGbqZufoiUXLQTZDrVcP'</span><span class="token punctuation">,</span> <span class="token string">'http://yan.com/posts/tags/search/terms.php'</span><span class="token punctuation">,</span> <span class="token number">3.680492634254</span><span class="token punctuation">,</span> <span class="token string">'min57@hotmail.com'</span><span class="token punctuation">,</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">2001</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">49</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'xMMOjlETIgKGqVGTrChG'</span><span class="token punctuation">,</span> <span class="token string">'yong83@xu.cn'</span><span class="token punctuation">]</span>
+>>> fake.pyiterable(nb_elements=10, variable_nb_elements=True)  # 随机iterable
+['ODfeVvcbAjPDBGwzljQw', 'https://www.tan.cn/list/category/homepage.php', 'YQlrsFkBieyKYaXlCljJ', Decimal('42778240911787.2'), Decimal('957411812.6383'), 'TGbqZufoiUXLQTZDrVcP', 'http://yan.com/posts/tags/search/terms.php', 3.680492634254, 'min57@hotmail.com', datetime.datetime(2001, 8, 16, 6, 10, 49), 'xMMOjlETIgKGqVGTrChG', 'yong83@xu.cn']
 
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>pylist<span class="token punctuation">(</span>nb_elements<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span> variable_nb_elements<span class="token operator">=</span><span class="token boolean">True</span> <span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 随机生成一个list</span>
-<span class="token punctuation">[</span><span class="token string">'KXQMXAkcEMSLfnIZkgJb'</span><span class="token punctuation">,</span> <span class="token string">'BtowiRsuIqyyULnSYYdr'</span><span class="token punctuation">,</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">2011</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">14</span><span class="token punctuation">,</span> <span class="token number">44</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">2008</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">38</span><span class="token punctuation">,</span> <span class="token number">38</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'juan47@hotmail.com'</span><span class="token punctuation">,</span> <span class="token string">'QEsdUpEqHLpThyWCjkNx'</span><span class="token punctuation">,</span> Decimal<span class="token punctuation">(</span><span class="token string">'-801375867.9'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'ucDyeZnHAXfZtkwdVUbR'</span><span class="token punctuation">,</span> <span class="token number">4707</span><span class="token punctuation">,</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">1974</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">54</span><span class="token punctuation">,</span> <span class="token number">29</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+>>> fake.pylist(nb_elements=10, variable_nb_elements=True )  # 随机生成一个list
+['KXQMXAkcEMSLfnIZkgJb', 'BtowiRsuIqyyULnSYYdr', datetime.datetime(2011, 10, 10, 14, 44, 2), datetime.datetime(2008, 5, 10, 1, 38, 38), 'juan47@hotmail.com', 'QEsdUpEqHLpThyWCjkNx', Decimal('-801375867.9'), 'ucDyeZnHAXfZtkwdVUbR', 4707, datetime.datetime(1974, 8, 7, 1, 54, 29)]
 
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>pydict<span class="token punctuation">(</span>nb_elements<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span> variable_nb_elements<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 随机字典</span>
-<span class="token punctuation">{</span><span class="token string">'其中'</span><span class="token punctuation">:</span> <span class="token number">9047</span><span class="token punctuation">,</span> <span class="token string">'一直'</span><span class="token punctuation">:</span> <span class="token string">'AUiUjuqccIdVAWSqzDbW'</span><span class="token punctuation">,</span> <span class="token string">'选择'</span><span class="token punctuation">:</span> <span class="token string">'ddong@hotmail.com'</span><span class="token punctuation">,</span> <span class="token string">'开发'</span><span class="token punctuation">:</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">1972</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">14</span><span class="token punctuation">,</span> <span class="token number">14</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'电影'</span><span class="token punctuation">:</span> <span class="token string">'KYmolBhkjSRxloXXFUUT'</span><span class="token punctuation">,</span> <span class="token string">'文化'</span><span class="token punctuation">:</span> <span class="token number">2681</span><span class="token punctuation">,</span> <span class="token string">'这里'</span><span class="token punctuation">:</span> <span class="token string">'uyang@yahoo.com'</span><span class="token punctuation">,</span> <span class="token string">'不会'</span><span class="token punctuation">:</span> <span class="token string">'ZPkwuxWsrJSHMNuFiWEx'</span><span class="token punctuation">,</span> <span class="token string">'社会'</span><span class="token punctuation">:</span> <span class="token string">'CiujeaZMZSuyYwuKzEdN'</span><span class="token punctuation">}</span>
+>>> fake.pydict(nb_elements=10, variable_nb_elements=True)   # 随机字典
+{'其中': 9047, '一直': 'AUiUjuqccIdVAWSqzDbW', '选择': 'ddong@hotmail.com', '开发': datetime.datetime(1972, 10, 20, 14, 14, 9), '电影': 'KYmolBhkjSRxloXXFUUT', '文化': 2681, '这里': 'uyang@yahoo.com', '不会': 'ZPkwuxWsrJSHMNuFiWEx', '社会': 'CiujeaZMZSuyYwuKzEdN'}
 
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>pyset<span class="token punctuation">(</span>nb_elements<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span> variable_nb_elements<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 随机set</span>
-<span class="token punctuation">{</span><span class="token string">'bhe@hotmail.com'</span><span class="token punctuation">,</span> <span class="token string">'http://fu.cn/list/home.htm'</span><span class="token punctuation">,</span> <span class="token string">'MlJluVirRkofBnKNtphM'</span><span class="token punctuation">,</span> <span class="token number">296</span><span class="token punctuation">,</span> <span class="token string">'ghoUSHkuEGmCzlJFKyHZ'</span><span class="token punctuation">,</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">2008</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">55</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'AgbynHjdvwYpUkbMsfqr'</span><span class="token punctuation">,</span> <span class="token number">8751</span><span class="token punctuation">,</span> <span class="token number">9649</span><span class="token punctuation">,</span> <span class="token string">'tangguiying@hotmail.com'</span><span class="token punctuation">,</span> Decimal<span class="token punctuation">(</span><span class="token string">'5727570036.91'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'HmDkExndcQIOaTtsSpsc'</span><span class="token punctuation">,</span> <span class="token string">'hjQlLLXuHVVzENEwoHJK'</span><span class="token punctuation">}</span>
+>>> fake.pyset(nb_elements=10, variable_nb_elements=True)  # 随机set
+{'bhe@hotmail.com', 'http://fu.cn/list/home.htm', 'MlJluVirRkofBnKNtphM', 296, 'ghoUSHkuEGmCzlJFKyHZ', datetime.datetime(2008, 4, 4, 2, 55, 4), 'AgbynHjdvwYpUkbMsfqr', 8751, 9649, 'tangguiying@hotmail.com', Decimal('5727570036.91'), 'HmDkExndcQIOaTtsSpsc', 'hjQlLLXuHVVzENEwoHJK'}
 
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>pytuple<span class="token punctuation">(</span>nb_elements<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span> variable_nb_elements<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 随机tuple</span>
-<span class="token punctuation">(</span><span class="token string">'http://www.cai.com/index/'</span><span class="token punctuation">,</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">1973</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">28</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'khltJQMYJvIDRMYodviZ'</span><span class="token punctuation">,</span> <span class="token string">'uJezUsEqiHaiFxwOPWvl'</span><span class="token punctuation">,</span> <span class="token string">'qojwZHyytBSQQavkDaTu'</span><span class="token punctuation">,</span> <span class="token string">'AHUCHYuVJTHnoSEuQDSY'</span><span class="token punctuation">,</span> <span class="token number">1012</span><span class="token punctuation">,</span> <span class="token string">'uEYVuzeTlgVhrnCATfKw'</span><span class="token punctuation">,</span> <span class="token string">'https://www.zhou.com/categories/tags/main/'</span><span class="token punctuation">,</span> <span class="token string">'LbLSFZPeATtzHvbmYhGr'</span><span class="token punctuation">)</span>
+>>> fake.pytuple(nb_elements=10, variable_nb_elements=True)   # 随机tuple
+('http://www.cai.com/index/', datetime.datetime(1973, 7, 28, 2, 12, 23), 'khltJQMYJvIDRMYodviZ', 'uJezUsEqiHaiFxwOPWvl', 'qojwZHyytBSQQavkDaTu', 'AHUCHYuVJTHnoSEuQDSY', 1012, 'uEYVuzeTlgVhrnCATfKw', 'https://www.zhou.com/categories/tags/main/', 'LbLSFZPeATtzHvbmYhGr')
 
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>pystruct<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 随机生成3个有10个元素的python数据结构</span>
-<span class="token punctuation">(</span><span class="token punctuation">[</span>datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">1996</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">26</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">35</span><span class="token punctuation">,</span> <span class="token number">26</span><span class="token punctuation">)</span><span class="token punctuation">,</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">1998</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">28</span><span class="token punctuation">,</span> <span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'qianming@hotmail.com'</span><span class="token punctuation">,</span> <span class="token string">'yEWMrpTqtAHfbxqldGrb'</span><span class="token punctuation">,</span> <span class="token string">'YgKYOnrjuthOrOXhlYIl'</span><span class="token punctuation">,</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">1994</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">55</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Decimal<span class="token punctuation">(</span><span class="token string">'-6865068.3'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'SYHFHiFvJlRVPcCKumUM'</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">8619.4354</span><span class="token punctuation">,</span> <span class="token string">'kwGipwcASeALLeKdaWBi'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string">'同时'</span><span class="token punctuation">:</span> <span class="token string">'BvtYdkNTHwZNMiIIRwKd'</span><span class="token punctuation">,</span> <span class="token string">'空间'</span><span class="token punctuation">:</span> <span class="token number">310959668662.457</span><span class="token punctuation">,</span> <span class="token string">'特别'</span><span class="token punctuation">:</span> <span class="token string">'PZQDBuuQWkcdryMloyKS'</span><span class="token punctuation">,</span> <span class="token string">'音乐'</span><span class="token punctuation">:</span> Decimal<span class="token punctuation">(</span><span class="token string">'-7219015925.0'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'项目'</span><span class="token punctuation">:</span> <span class="token string">'https://www.zhou.cn/main.php'</span><span class="token punctuation">,</span> <span class="token string">'回复'</span><span class="token punctuation">:</span> <span class="token number">30.408750841</span><span class="token punctuation">,</span> <span class="token string">'显示'</span><span class="token punctuation">:</span> <span class="token string">'etZMrsjXJgZpDfZWhpoS'</span><span class="token punctuation">,</span> <span class="token string">'大小'</span><span class="token punctuation">:</span> <span class="token number">7472</span><span class="token punctuation">,</span> <span class="token string">'类型'</span><span class="token punctuation">:</span> <span class="token string">'OsjpxgLqnTcdVOlHoMoP'</span><span class="token punctuation">,</span> <span class="token string">'什么'</span><span class="token punctuation">:</span> <span class="token string">'http://www.xia.com/posts/app/index/'</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string">'朋友'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">415025.243093017</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">1799</span><span class="token punctuation">,</span> <span class="token number">585</span><span class="token punctuation">,</span> <span class="token string">'shu@hotmail.com'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">:</span> <span class="token number">9980</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">:</span> <span class="token string">'qnOnFTzGnsjvXGybBnMF'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'http://zheng.cn/list/search/tag/faq.html'</span><span class="token punctuation">,</span> Decimal<span class="token punctuation">(</span><span class="token string">'964285276661463.0'</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'发生'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">5339010.6134</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">1987</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">21</span><span class="token punctuation">,</span> <span class="token number">45</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'SvSpvKqTXlJvdQhHScwM'</span><span class="token punctuation">,</span> <span class="token string">'PZjKOYzZzoNVsHLRcARQ'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">:</span> <span class="token string">'https://www.yan.cn/register/'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">:</span> <span class="token number">2191</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'HMHKQuLRBQaaAypRbtHU'</span><span class="token punctuation">,</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">2014</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">24</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">,</span> <span class="token number">36</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'我的'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">:</span> <span class="token string">'linxia@yahoo.com'</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'http://gu.com/about.php'</span><span class="token punctuation">,</span> <span class="token string">'DhzpWYkgLCobGSHDLXzI'</span><span class="token punctuation">,</span> <span class="token number">1420</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">:</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">1986</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">22</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">:</span> <span class="token string">'rRHwQQzkpAMBQxwVITBa'</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">1984</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">52</span><span class="token punctuation">,</span> <span class="token number">18</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">73821572962388.7</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'全部'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token number">3</span><span class="token punctuation">:</span> <span class="token string">'uMQeeBXYNGhrHnAerdjp'</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">323329.56403</span><span class="token punctuation">,</span> <span class="token string">'kFvqXFhhtQPNtrOjKtxa'</span><span class="token punctuation">,</span> <span class="token string">'http://peng.cn/'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token number">3</span><span class="token punctuation">:</span> <span class="token string">'lcaoeisYIAOsuRjbOXia'</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">:</span> Decimal<span class="token punctuation">(</span><span class="token string">'-902407032449085.0'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">2296</span><span class="token punctuation">,</span> <span class="token string">'uyuWgnsONzLluXqXdASM'</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'大小'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token number">4</span><span class="token punctuation">:</span> <span class="token string">'min63@hotmail.com'</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">1991</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">22</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">,</span> <span class="token number">21</span><span class="token punctuation">,</span> <span class="token number">48</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'cDYEScdIokWuvGhRkWqs'</span><span class="token punctuation">,</span> <span class="token string">'XeDJojWyywFvzmWYaokO'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token number">4</span><span class="token punctuation">:</span> Decimal<span class="token punctuation">(</span><span class="token string">'-4167029.2915827'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">:</span> <span class="token number">4030</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">6372</span><span class="token punctuation">,</span> <span class="token string">'xfRXXEFGsNQpeIGmbaHU'</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'语言'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">:</span> <span class="token string">'https://www.guo.cn/'</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">6498</span><span class="token punctuation">,</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">1981</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">18</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">29</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">42598100345.61</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">:</span> <span class="token string">'http://zheng.cn/'</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">229316.268238</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'https://www.qiao.cn/home/'</span><span class="token punctuation">,</span> <span class="token string">'GtaEXeVxjRnnkggjEguv'</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'表示'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token number">6</span><span class="token punctuation">:</span> <span class="token string">'xcBvcGUWxdMhDqgzmhSd'</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'kwDaFhyTKqHajGSaNOMf'</span><span class="token punctuation">,</span> <span class="token number">8561</span><span class="token punctuation">,</span> <span class="token number">5456</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token number">6</span><span class="token punctuation">:</span> <span class="token string">'https://zhou.cn/tags/tag/faq.html'</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">:</span> <span class="token string">'IGayAZtTQVlSOasQwgug'</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'iCjwBzHfmPSLqAgmIOle'</span><span class="token punctuation">,</span> <span class="token number">70511766106574.5</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'电子'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token number">7</span><span class="token punctuation">:</span> <span class="token string">'http://www.lu.org/tags/posts/terms/'</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">1978</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">35</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'https://song.cn/main/categories/homepage.html'</span><span class="token punctuation">,</span> <span class="token string">'https://long.com/register.html'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token number">7</span><span class="token punctuation">:</span> <span class="token string">'nFJNhyMYBvfTxrYwYPUQ'</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">2252757903.0</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'GuJnhMEgXoMAivrgGZie'</span><span class="token punctuation">,</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span><span class="token number">2014</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">29</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'的人'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token number">8</span><span class="token punctuation">:</span> <span class="token string">'WgHePwYSPgSiPllXpLlJ'</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">1782</span><span class="token punctuation">,</span> <span class="token string">'fSepbXwpvhiBphzDTDNC'</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">9117731.63459416</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token number">8</span><span class="token punctuation">:</span> <span class="token number">5602</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">:</span> <span class="token number">3664</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'http://www.mao.com/search/tag/main/'</span><span class="token punctuation">,</span> Decimal<span class="token punctuation">(</span><span class="token string">'5579.7377'</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'不过'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token number">9</span><span class="token punctuation">:</span> <span class="token string">'rOfkDPTHvzKbfvQHbPNm'</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">314.397</span><span class="token punctuation">,</span> <span class="token string">'StqeLyXkIDKHfExSjggk'</span><span class="token punctuation">,</span> <span class="token string">'xiuyingkang@gao.cn'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token number">9</span><span class="token punctuation">:</span> <span class="token string">'BLKNdcccamYzBwRcMxlx'</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">:</span> <span class="token string">'yongduan@gong.org'</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'ZocoQHdbhaNloWALnzwt'</span><span class="token punctuation">,</span> <span class="token string">'eWVvvHurAlZZRxlYHZXi'</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
-<h3 id="profile-人物描述信息"><a href="#profile-人物描述信息" class="headerlink" title="profile 人物描述信息"></a>profile 人物描述信息</h3><pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>profile<span class="token punctuation">(</span>fields<span class="token operator">=</span>None<span class="token punctuation">,</span> sex<span class="token operator">=</span>None<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 人物描述信息：姓名、性别、地址、公司等</span>
-<span class="token punctuation">{</span><span class="token string">'job'</span><span class="token punctuation">:</span> <span class="token string">'Licensed conveyancer'</span><span class="token punctuation">,</span> <span class="token string">'company'</span><span class="token punctuation">:</span> <span class="token string">'万迅电脑信息有限公司'</span><span class="token punctuation">,</span> <span class="token string">'ssn'</span><span class="token punctuation">:</span> <span class="token string">'370684199902182726'</span><span class="token punctuation">,</span> <span class="token string">'residence'</span><span class="token punctuation">:</span> <span class="token string">'福建省小红市南长广州街K座 406448'</span><span class="token punctuation">,</span> <span class="token string">'current_location'</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>Decimal<span class="token punctuation">(</span><span class="token string">'18.050895'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Decimal<span class="token punctuation">(</span><span class="token string">'-0.877117'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'blood_group'</span><span class="token punctuation">:</span> <span class="token string">'0-'</span><span class="token punctuation">,</span> <span class="token string">'website'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'https://www.yi.org/'</span><span class="token punctuation">,</span> <span class="token string">'https://www.hu.com/'</span><span class="token punctuation">,</span> <span class="token string">'https://www.yin.cn/'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'username'</span><span class="token punctuation">:</span> <span class="token string">'minghuang'</span><span class="token punctuation">,</span> <span class="token string">'name'</span><span class="token punctuation">:</span> <span class="token string">'后英'</span><span class="token punctuation">,</span> <span class="token string">'sex'</span><span class="token punctuation">:</span> <span class="token string">'F'</span><span class="token punctuation">,</span> <span class="token string">'address'</span><span class="token punctuation">:</span> <span class="token string">'安徽省秀荣市璧山嘉禾路T座 954960'</span><span class="token punctuation">,</span> <span class="token string">'mail'</span><span class="token punctuation">:</span> <span class="token string">'czhong@hotmail.com'</span><span class="token punctuation">,</span> <span class="token string">'birthdate'</span><span class="token punctuation">:</span> <span class="token string">'1975-03-09'</span><span class="token punctuation">}</span>
-<span class="token operator">>></span><span class="token operator">></span> s <span class="token operator">=</span> fake<span class="token punctuation">.</span>simple_profile<span class="token punctuation">(</span>sex<span class="token operator">=</span><span class="token string">"m"</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 人物精简信息</span>
-<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">for</span> i<span class="token punctuation">,</span>v <span class="token keyword">in</span> s<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>v<span class="token punctuation">)</span>
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+>>> fake.pystruct()  # 随机生成3个有10个元素的python数据结构
+([datetime.datetime(1996, 10, 26, 7, 35, 26), datetime.datetime(1998, 2, 28, 17, 20, 8), 'qianming@hotmail.com', 'yEWMrpTqtAHfbxqldGrb', 'YgKYOnrjuthOrOXhlYIl', datetime.datetime(1994, 12, 10, 0, 55, 30), Decimal('-6865068.3'), 'SYHFHiFvJlRVPcCKumUM', -8619.4354, 'kwGipwcASeALLeKdaWBi'], {'同时': 'BvtYdkNTHwZNMiIIRwKd', '空间': 310959668662.457, '特别': 'PZQDBuuQWkcdryMloyKS', '音乐': Decimal('-7219015925.0'), '项目': 'https://www.zhou.cn/main.php', '回复': 30.408750841, '显示': 'etZMrsjXJgZpDfZWhpoS', '大小': 7472, '类型': 'OsjpxgLqnTcdVOlHoMoP', '什么': 'http://www.xia.com/posts/app/index/'}, {'朋友': {0: -415025.243093017, 1: [1799, 585, 'shu@hotmail.com'], 2: {0: 9980, 1: 'qnOnFTzGnsjvXGybBnMF', 2: ['http://zheng.cn/list/search/tag/faq.html', Decimal('964285276661463.0')]}}, '发生': {1: -5339010.6134, 2: [datetime.datetime(1987, 6, 23, 15, 21, 45), 'SvSpvKqTXlJvdQhHScwM', 'PZjKOYzZzoNVsHLRcARQ'], 3: {1: 'https://www.yan.cn/register/', 2: 2191, 3: ['HMHKQuLRBQaaAypRbtHU', datetime.datetime(2014, 5, 24, 3, 32, 36)]}}, '我的': {2: 'linxia@yahoo.com', 3: ['http://gu.com/about.php', 'DhzpWYkgLCobGSHDLXzI', 1420], 4: {2: datetime.datetime(1986, 2, 22, 4, 50, 12), 3: 'rRHwQQzkpAMBQxwVITBa', 4: [datetime.datetime(1984, 2, 6, 11, 52, 18), -73821572962388.7]}}, '全部': {3: 'uMQeeBXYNGhrHnAerdjp', 4: [323329.56403, 'kFvqXFhhtQPNtrOjKtxa', 'http://peng.cn/'], 5: {3: 'lcaoeisYIAOsuRjbOXia', 4: Decimal('-902407032449085.0'), 5: [2296, 'uyuWgnsONzLluXqXdASM']}}, '大小': {4: 'min63@hotmail.com', 5: [datetime.datetime(1991, 10, 22, 19, 21, 48), 'cDYEScdIokWuvGhRkWqs', 'XeDJojWyywFvzmWYaokO'], 6: {4: Decimal('-4167029.2915827'), 5: 4030, 6: [6372, 'xfRXXEFGsNQpeIGmbaHU']}}, '语言': {5: 'https://www.guo.cn/', 6: [6498, datetime.datetime(1981, 12, 3, 18, 4, 29), 42598100345.61], 7: {5: 'http://zheng.cn/', 6: -229316.268238, 7: ['https://www.qiao.cn/home/', 'GtaEXeVxjRnnkggjEguv']}}, '表示': {6: 'xcBvcGUWxdMhDqgzmhSd', 7: ['kwDaFhyTKqHajGSaNOMf', 8561, 5456], 8: {6: 'https://zhou.cn/tags/tag/faq.html', 7: 'IGayAZtTQVlSOasQwgug', 8: ['iCjwBzHfmPSLqAgmIOle', 70511766106574.5]}}, '电子': {7: 'http://www.lu.org/tags/posts/terms/', 8: [datetime.datetime(1978, 8, 11, 12, 16, 35), 'https://song.cn/main/categories/homepage.html', 'https://long.com/register.html'], 9: {7: 'nFJNhyMYBvfTxrYwYPUQ', 8: -2252757903.0, 9: ['GuJnhMEgXoMAivrgGZie', datetime.datetime(2014, 5, 29, 1, 17, 50)]}}, '的人': {8: 'WgHePwYSPgSiPllXpLlJ', 9: [1782, 'fSepbXwpvhiBphzDTDNC', -9117731.63459416], 10: {8: 5602, 9: 3664, 10: ['http://www.mao.com/search/tag/main/', Decimal('5579.7377')]}}, '不过': {9: 'rOfkDPTHvzKbfvQHbPNm', 10: [314.397, 'StqeLyXkIDKHfExSjggk', 'xiuyingkang@gao.cn'], 11: {9: 'BLKNdcccamYzBwRcMxlx', 10: 'yongduan@gong.org', 11: ['ZocoQHdbhaNloWALnzwt', 'eWVvvHurAlZZRxlYHZXi']}}})
+</code></pre>
+<h3 id="profile-人物描述信息"><a href="#profile-人物描述信息" class="headerlink" title="profile 人物描述信息"></a>profile 人物描述信息</h3><pre class=" language-lang-python"><code class="language-lang-python">>>> fake.profile(fields=None, sex=None)  # 人物描述信息：姓名、性别、地址、公司等
+{'job': 'Licensed conveyancer', 'company': '万迅电脑信息有限公司', 'ssn': '370684199902182726', 'residence': '福建省小红市南长广州街K座 406448', 'current_location': (Decimal('18.050895'), Decimal('-0.877117')), 'blood_group': '0-', 'website': ['https://www.yi.org/', 'https://www.hu.com/', 'https://www.yin.cn/'], 'username': 'minghuang', 'name': '后英', 'sex': 'F', 'address': '安徽省秀荣市璧山嘉禾路T座 954960', 'mail': 'czhong@hotmail.com', 'birthdate': '1975-03-09'}
+>>> s = fake.simple_profile(sex="m") # 人物精简信息
+>>> for i,v in s.items():
+...     print(i,v)
+...
 username chao85
 name 邴宇
 sex M
-address 陕西省东市朝阳廖街Y座 <span class="token number">757661</span>
-mail xiazhang@gmail<span class="token punctuation">.</span>com
-birthdate <span class="token number">1996</span><span class="token operator">-</span><span class="token number">09</span><span class="token operator">-</span><span class="token number">20</span></code></pre>
-<h3 id="ssn-社会安全码-身份证"><a href="#ssn-社会安全码-身份证" class="headerlink" title="ssn 社会安全码(身份证)"></a>ssn 社会安全码(身份证)</h3><pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>ssn<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 随机生成身份证号(18位)</span>
-<span class="token string">'140100196612297997'</span>
-<span class="token operator">>></span><span class="token operator">></span> len<span class="token punctuation">(</span>fake<span class="token punctuation">.</span>ssn<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token number">18</span></code></pre>
+address 陕西省东市朝阳廖街Y座 757661
+mail xiazhang@gmail.com
+birthdate 1996-09-20
+</code></pre>
+<h3 id="ssn-社会安全码-身份证"><a href="#ssn-社会安全码-身份证" class="headerlink" title="ssn 社会安全码(身份证)"></a>ssn 社会安全码(身份证)</h3><pre class=" language-lang-python"><code class="language-lang-python">>>> fake.ssn() # 随机生成身份证号(18位)
+'140100196612297997'
+>>> len(fake.ssn())
+18
+</code></pre>
 <h3 id="user-agent-用户代理"><a href="#user-agent-用户代理" class="headerlink" title="user_agent 用户代理"></a>user_agent 用户代理</h3><p>常用在伪造浏览器信息</p>
-<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>user_agent<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 伪造UA</span>
-<span class="token string">'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/5361 (KHTML, like Gecko) Chrome/15.0.812.0 Safari/5361'</span></code></pre>
+<pre class=" language-lang-python"><code class="language-lang-python">>>> fake.user_agent() # 伪造UA
+'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/5361 (KHTML, like Gecko) Chrome/15.0.812.0 Safari/5361'
+</code></pre>
 <p>平台信息伪造</p>
-<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>linux_platform_token<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token string">'X11; Linux i686'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>linux_processor<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token string">'i686'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>windows_platform_token<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token string">'Windows CE'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>mac_platform_token<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token string">'Macintosh; Intel Mac OS X 10_7_4'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>mac_processor<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token string">'PPC'</span></code></pre>
+<pre class=" language-lang-python"><code class="language-lang-python">>>> fake.linux_platform_token()
+'X11; Linux i686'
+>>> fake.linux_processor()
+'i686'
+>>> fake.windows_platform_token()
+'Windows CE'
+>>> fake.mac_platform_token()
+'Macintosh; Intel Mac OS X 10_7_4'
+>>> fake.mac_processor()
+'PPC'
+</code></pre>
 <p>浏览器伪造</p>
-<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>internet_explorer<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># IE浏览器</span>
-<span class="token string">'Mozilla/5.0 (compatible; MSIE 5.0; Windows NT 6.1; Trident/4.0)'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>opera<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># opera浏览器</span>
-<span class="token string">'Opera/9.37.(Windows 95; doi-IN) Presto/2.9.178 Version/10.00'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>firefox<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># firefox浏览器</span>
-<span class="token string">'Mozilla/5.0 (Windows NT 5.0; te-IN; rv:1.9.2.20) Gecko/2015-09-28 13:29:05 Firefox/12.0'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>safari<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># safari浏览器</span>
-<span class="token string">'Mozilla/5.0 (Windows; U; Windows NT 4.0) AppleWebKit/533.37.4 (KHTML, like Gecko) Version/5.0 Safari/533.37.4'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>chrome<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># chrome浏览器</span>
-<span class="token string">'Mozilla/5.0 (Windows 98; Win 9x 4.90) AppleWebKit/5361 (KHTML, like Gecko) Chrome/14.0.866.0 Safari/5361'</span></code></pre>
+<pre class=" language-lang-python"><code class="language-lang-python">>>> fake.internet_explorer() # IE浏览器
+'Mozilla/5.0 (compatible; MSIE 5.0; Windows NT 6.1; Trident/4.0)'
+>>> fake.opera() # opera浏览器
+'Opera/9.37.(Windows 95; doi-IN) Presto/2.9.178 Version/10.00'
+>>> fake.firefox() # firefox浏览器
+'Mozilla/5.0 (Windows NT 5.0; te-IN; rv:1.9.2.20) Gecko/2015-09-28 13:29:05 Firefox/12.0'
+>>> fake.safari() # safari浏览器
+'Mozilla/5.0 (Windows; U; Windows NT 4.0) AppleWebKit/533.37.4 (KHTML, like Gecko) Version/5.0 Safari/533.37.4'
+>>> fake.chrome() # chrome浏览器
+'Mozilla/5.0 (Windows 98; Win 9x 4.90) AppleWebKit/5361 (KHTML, like Gecko) Chrome/14.0.866.0 Safari/5361'
+</code></pre>
 <h2 id="自定义扩展"><a href="#自定义扩展" class="headerlink" title="自定义扩展"></a>自定义扩展</h2><p>Faker 已经提供了足够丰富的信息生成，包括名字、手机号、邮箱地址、邮编等等。尽管如此，可能还是没有办法满足你的需求。这时，可以利用自定义扩展，引用外部的 provider，自定义你要的功能。</p>
 <p>Faker 对象可以通过 <code>add_provider</code> 方法将自定义的 Provider 添加到对象中,自定义的 Provider 需要继承自 BaseProvider。</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> faker <span class="token keyword">import</span> Faker
-fake <span class="token operator">=</span> Faker<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre class=" language-lang-python"><code class="language-lang-python">from faker import Faker
+fake = Faker()
 
-<span class="token comment" spellcheck="true"># first, import a similar Provider or use the default one</span>
-<span class="token keyword">from</span> faker<span class="token punctuation">.</span>providers <span class="token keyword">import</span> BaseProvider
+# first, import a similar Provider or use the default one
+from faker.providers import BaseProvider
 
-<span class="token comment" spellcheck="true"># create new provider class</span>
-<span class="token keyword">class</span> <span class="token class-name">MyProvider</span><span class="token punctuation">(</span>BaseProvider<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">foo</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token string">'bar'</span>
+# create new provider class
+class MyProvider(BaseProvider):
+    def foo(self):
+        return 'bar'
 
-<span class="token comment" spellcheck="true"># then add new provider to faker instance</span>
-fake<span class="token punctuation">.</span>add_provider<span class="token punctuation">(</span>MyProvider<span class="token punctuation">)</span>
+# then add new provider to faker instance
+fake.add_provider(MyProvider)
 
-<span class="token comment" spellcheck="true"># now you can use:</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>fake<span class="token punctuation">.</span>foo<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+# now you can use:
+print(fake.foo())
+</code></pre>
 <p>结果显示：</p>
-<pre><code>bar</code></pre>
-<h2 id="随机控制"><a href="#随机控制" class="headerlink" title="随机控制"></a>随机控制</h2><p><code>Faker</code> 随机生成由 <code>random.Random</code> 驱动。其中，<code>.random</code> 属性返回 <code>random.Random</code> 对象。通过对该对象的操作，可以实现自定义的行为。</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> faker <span class="token keyword">import</span> Faker
-fake <span class="token operator">=</span> Faker<span class="token punctuation">(</span><span class="token punctuation">)</span>
-fake<span class="token punctuation">.</span>random
-fake<span class="token punctuation">.</span>random<span class="token punctuation">.</span>getstate<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<pre><code>bar
+</code></pre><h2 id="随机控制"><a href="#随机控制" class="headerlink" title="随机控制"></a>随机控制</h2><p><code>Faker</code> 随机生成由 <code>random.Random</code> 驱动。其中，<code>.random</code> 属性返回 <code>random.Random</code> 对象。通过对该对象的操作，可以实现自定义的行为。</p>
+<pre class=" language-lang-python"><code class="language-lang-python">from faker import Faker
+fake = Faker()
+fake.random
+fake.random.getstate()
+</code></pre>
 <p>那么，可以实现什么自定义呢？举个例子，我们可以设置 <code>seed</code>，通过给定的 <code>seed</code> 可以控制每次生成的内容都是一样的。</p>
-<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> faker <span class="token keyword">import</span> Faker
-<span class="token operator">>></span><span class="token operator">></span> fake <span class="token operator">=</span> Faker<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span><span class="token number">4321</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>name<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token string">'Ryan Gallagher'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>address<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token string">'7631 Johnson Village Suite 690\nAdamsbury, NC 50008'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span><span class="token number">4321</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>name<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token string">'Ryan Gallagher'</span>
-<span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>address<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token string">'7631 Johnson Village Suite 690\nAdamsbury, NC 50008'</span>xxxxxxxxxx <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> faker <span class="token keyword">import</span> Faker<span class="token operator">>></span><span class="token operator">></span> fake <span class="token operator">=</span> Faker<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span><span class="token number">4321</span><span class="token punctuation">)</span><span class="token operator">>></span><span class="token operator">></span> <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> faker <span class="token keyword">import</span> Faker<span class="token operator">>></span><span class="token operator">></span> fake <span class="token operator">=</span> Faker<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span><span class="token number">4321</span><span class="token punctuation">)</span><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>name<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token string">'Ryan Gallagher'</span><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>address<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token string">'7631 Johnson Village Suite 690\nAdamsbury, NC 50008'</span><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span><span class="token number">4321</span><span class="token punctuation">)</span><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>name<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token string">'Ryan Gallagher'</span><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>address<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token string">'7631 Johnson Village Suite 690\nAdamsbury, NC 50008'</span>fake<span class="token punctuation">.</span>name<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token string">'Ryan Gallagher'</span><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>address<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token string">'7631 Johnson Village Suite 690\nAdamsbury, NC 50008'</span><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span><span class="token number">4321</span><span class="token punctuation">)</span><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>name<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token string">'Ryan Gallagher'</span><span class="token operator">>></span><span class="token operator">></span> fake<span class="token punctuation">.</span>address<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token string">'7631 Johnson Village Suite 690\nAdamsbury, NC 50008'</span></code></pre>
+<pre class=" language-lang-python"><code class="language-lang-python">>>> from faker import Faker
+>>> fake = Faker()
+>>> fake.random.seed(4321)
+>>> fake.name()
+'Ryan Gallagher'
+>>> fake.address()
+'7631 Johnson Village Suite 690\nAdamsbury, NC 50008'
+>>> fake.random.seed(4321)
+>>> fake.name()
+'Ryan Gallagher'
+>>> fake.address()
+'7631 Johnson Village Suite 690\nAdamsbury, NC 50008'xxxxxxxxxx >>> from faker import Faker>>> fake = Faker()>>> fake.random.seed(4321)>>> >>> from faker import Faker>>> fake = Faker()>>> fake.random.seed(4321)>>> fake.name()'Ryan Gallagher'>>> fake.address()'7631 Johnson Village Suite 690\nAdamsbury, NC 50008'>>> fake.random.seed(4321)>>> fake.name()'Ryan Gallagher'>>> fake.address()'7631 Johnson Village Suite 690\nAdamsbury, NC 50008'fake.name()'Ryan Gallagher'>>> fake.address()'7631 Johnson Village Suite 690\nAdamsbury, NC 50008'>>> fake.random.seed(4321)>>> fake.name()'Ryan Gallagher'>>> fake.address()'7631 Johnson Village Suite 690\nAdamsbury, NC 50008'
+</code></pre>
 <p>不同的两次运行，只要seed一样，生成出来的信息就是一样的。</p>
 <p>注意：<code>fake.random.seed(4321)</code> 可以写成 <code>fake.seed(4321)</code> 。</p>
 <h2 id="命令行生成"><a href="#命令行生成" class="headerlink" title="命令行生成"></a>命令行生成</h2><p>有时想在shell或者其他程序中生成一些伪数据，是不是一定要写一个Python脚本呢？别急——Faker提供了一个命令行工具，估计可以应对大部分场景了：</p>
-<pre class=" language-python"><code class="language-python">$ faker address
-<span class="token number">968</span> Bahringer Garden Apt<span class="token punctuation">.</span> 722Kristinaland<span class="token punctuation">,</span> NJ <span class="token number">09890</span>
+<pre class=" language-lang-python"><code class="language-lang-python">$ faker address
+968 Bahringer Garden Apt. 722Kristinaland, NJ 09890
 
-$ python3 <span class="token operator">-</span>m faker address
-<span class="token number">432</span> Marvin Wells Apt<span class="token punctuation">.</span> <span class="token number">593</span>\nWest Eric<span class="token punctuation">,</span> DC <span class="token number">45650</span><span class="token operator">-</span><span class="token number">8420</span>
+$ python3 -m faker address
+432 Marvin Wells Apt. 593\nWest Eric, DC 45650-8420
 
-$ faker <span class="token operator">-</span>l de_DE address
-Samira<span class="token operator">-</span>Niemeier<span class="token operator">-</span>Allee <span class="token number">5694812</span> Biedenkopf
+$ faker -l de_DE address
+Samira-Niemeier-Allee 5694812 Biedenkopf
 
 $ faker profile
-<span class="token punctuation">{</span><span class="token string">'job'</span><span class="token punctuation">:</span> <span class="token string">'Designer, blown glass/stained glass'</span><span class="token punctuation">,</span> <span class="token string">'company'</span><span class="token punctuation">:</span> <span class="token string">'Dennis-Bowers'</span><span class="token punctuation">,</span> <span class="token string">'ssn'</span><span class="token punctuation">:</span> <span class="token string">'034-28-9965'</span><span class="token punctuation">,</span> <span class="token string">'residence'</span><span class="token punctuation">:</span> <span class="token string">'34796 Jeremiah Station Apt. 782\nWest Timothy, TX 24139-6974'</span><span class="token punctuation">,</span> <span class="token string">'current_location'</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>Decimal<span class="token punctuation">(</span><span class="token string">'-47.425017'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Decimal<span class="token punctuation">(</span><span class="token string">'-42.743615'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'blood_group'</span><span class="token punctuation">:</span> <span class="token string">'0+'</span><span class="token punctuation">,</span> <span class="token string">'website'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'https://www.gardner.biz/'</span><span class="token punctuation">,</span> <span class="token string">'http://glover-ellison.info/'</span><span class="token punctuation">,</span> <span class="token string">'http://www.harrison.biz/'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'username'</span><span class="token punctuation">:</span> <span class="token string">'patrick33'</span><span class="token punctuation">,</span> <span class="token string">'name'</span><span class="token punctuation">:</span> <span class="token string">'Alexandra Montgomery'</span><span class="token punctuation">,</span> <span class="token string">'sex'</span><span class="token punctuation">:</span> <span class="token string">'F'</span><span class="token punctuation">,</span> <span class="token string">'address'</span><span class="token punctuation">:</span> <span class="token string">'2314 Collier Stream Suite 093\nMcintyreside, UT 19553'</span><span class="token punctuation">,</span> <span class="token string">'mail'</span><span class="token punctuation">:</span> <span class="token string">'gomezterri@hotmail.com'</span><span class="token punctuation">,</span> <span class="token string">'birthdate'</span><span class="token punctuation">:</span> <span class="token string">'2005-01-30'</span><span class="token punctuation">}</span>
+{'job': 'Designer, blown glass/stained glass', 'company': 'Dennis-Bowers', 'ssn': '034-28-9965', 'residence': '34796 Jeremiah Station Apt. 782\nWest Timothy, TX 24139-6974', 'current_location': (Decimal('-47.425017'), Decimal('-42.743615')), 'blood_group': '0+', 'website': ['https://www.gardner.biz/', 'http://glover-ellison.info/', 'http://www.harrison.biz/'], 'username': 'patrick33', 'name': 'Alexandra Montgomery', 'sex': 'F', 'address': '2314 Collier Stream Suite 093\nMcintyreside, UT 19553', 'mail': 'gomezterri@hotmail.com', 'birthdate': '2005-01-30'}
 
-$ faker profile ssn<span class="token punctuation">,</span>name
-<span class="token punctuation">{</span><span class="token string">'ssn'</span><span class="token punctuation">:</span> <span class="token string">'344-68-7420'</span><span class="token punctuation">,</span> <span class="token string">'name'</span><span class="token punctuation">:</span> <span class="token string">'Veronica Brennan'</span><span class="token punctuation">}</span>
+$ faker profile ssn,name
+{'ssn': '344-68-7420', 'name': 'Veronica Brennan'}
 
-$ faker <span class="token operator">-</span>r<span class="token operator">=</span><span class="token number">3</span> <span class="token operator">-</span>s<span class="token operator">=</span><span class="token string">";"</span> name
-Willam Kertzmann<span class="token punctuation">;</span>
-Josiah Maggio<span class="token punctuation">;</span>
-Gayla Schmitt<span class="token punctuation">;</span></code></pre>
+$ faker -r=3 -s=";" name
+Willam Kertzmann;
+Josiah Maggio;
+Gayla Schmitt;
+</code></pre>
 <p>faker 命令帮助：</p>
-<pre class=" language-python"><code class="language-python">faker <span class="token punctuation">[</span><span class="token operator">-</span>h<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">-</span>version<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token operator">-</span>o output<span class="token punctuation">]</span>
-      <span class="token punctuation">[</span><span class="token operator">-</span>l <span class="token punctuation">{</span>bg_BG<span class="token punctuation">,</span>cs_CZ<span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span>zh_CN<span class="token punctuation">,</span>zh_TW<span class="token punctuation">}</span><span class="token punctuation">]</span>
-      <span class="token punctuation">[</span><span class="token operator">-</span>r REPEAT<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token operator">-</span>s SEP<span class="token punctuation">]</span>
-      <span class="token punctuation">[</span><span class="token operator">-</span>i <span class="token punctuation">{</span>module<span class="token punctuation">.</span>containing<span class="token punctuation">.</span>custom_provider othermodule<span class="token punctuation">.</span>containing<span class="token punctuation">.</span>custom_provider<span class="token punctuation">}</span><span class="token punctuation">]</span>
-      <span class="token punctuation">[</span>fake<span class="token punctuation">]</span> <span class="token punctuation">[</span>fake argument <span class="token punctuation">[</span>fake argument <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">]</span></code></pre>
+<pre class=" language-lang-python"><code class="language-lang-python">faker [-h] [--version] [-o output]
+      [-l {bg_BG,cs_CZ,...,zh_CN,zh_TW}]
+      [-r REPEAT] [-s SEP]
+      [-i {module.containing.custom_provider othermodule.containing.custom_provider}]
+      [fake] [fake argument [fake argument ...]]
+</code></pre>
 <p>选项说明：</p>
 <ul>
 <li><code>faker</code> ： 在shell中，<code>faker</code> 命令也可以用 <code>python -m faker</code> 来代替</li>
@@ -1695,7 +1724,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">28.4k</span>&nbsp;字
+                class="white-color">28.2k</span>&nbsp;字
             
             
             
