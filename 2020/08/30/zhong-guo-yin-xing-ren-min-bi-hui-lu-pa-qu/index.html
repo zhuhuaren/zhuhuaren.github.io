@@ -17,10 +17,12 @@
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1.0.2/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"zhuhuaren.github.io","root":"/","scheme":"Pisces","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"zhuhuaren.github.io","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":100,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
   <meta name="description" content="文章导语 今年暑假系里给每个同学布置了一篇学年论文，就想着怎么也得弄点数据撑撑排面吧，一开始我是不想爬的，然后就在网上各种找接口，找了半天，不是不能用就是获取的数据只是实时的，无法获得历史数据，哎，既然没办法，就只能爬了，顺便就在一个群里问了一下端口的事，然后开始准备工作，等网页分析完了，开始敲代码的时候，又看了一下手机，有个道友说tushare里面有接口，虽然tushare用了也挺多次吧，但是没">
@@ -33,7 +35,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190709123228488.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQyNTc4NA==,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190709123629780.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQyNTc4NA==,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="2020-08-30T12:52:47.483Z">
-<meta property="article:modified_time" content="2020-09-04T01:22:15.008Z">
+<meta property="article:modified_time" content="2021-02-01T20:41:07.590Z">
 <meta property="article:author" content="仁义">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="爬虫">
@@ -164,16 +166,6 @@
     <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
 
   </li>
-        <li class="menu-item menu-item-sitemap">
-
-    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
-
-  </li>
-        <li class="menu-item menu-item-commonweal">
-
-    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
-
-  </li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -236,6 +228,8 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="仁义"
+      src="/images/avatar.png">
   <p class="site-author-name" itemprop="name">仁义</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -262,6 +256,14 @@
       </div>
   </nav>
 </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zhuhuaren" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zhuhuaren" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ofzhuhuaren@gmail.com" title="E-Mail → mailto:ofzhuhuaren@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
 
 
 
@@ -278,6 +280,8 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -296,7 +300,7 @@
     <link itemprop="mainEntityOfPage" href="https://zhuhuaren.github.io/2020/08/30/zhong-guo-yin-xing-ren-min-bi-hui-lu-pa-qu/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.png">
       <meta itemprop="name" content="仁义">
       <meta itemprop="description" content="">
     </span>
@@ -327,7 +331,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-09-04 09:22:15" itemprop="dateModified" datetime="2020-09-04T09:22:15+08:00">2020-09-04</time>
+        <time title="修改时间：2021-02-02 04:41:07" itemprop="dateModified" datetime="2021-02-02T04:41:07+08:00">2021-02-02</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -350,8 +354,9 @@
     
     <div class="post-body" itemprop="articleBody">
         <h4 id="文章导语"><a href="#文章导语" class="headerlink" title="文章导语"></a>文章导语</h4><blockquote>
-<p>今年暑假系里给每个同学布置了一篇学年论文，就想着怎么也得弄点数据撑撑排面吧，一开始我是不想爬的，然后就在网上各种找接口，找了半天，不是不能用就是获取的数据只是实时的，无法获得历史数据，哎，既然没办法，就只能爬了，顺便就在一个群里问了一下端口的事，然后开始准备工作，等网页分析完了，开始敲代码的时候，又看了一下手机，有个道友说<code>tushare</code>里面有接口，虽然<code>tushare</code>用了也挺多次吧，但是没发现有汇率的接口啊，我又抱着希望去看了看，果不其然，还真有。但是回头一想，网页都分析完了，干脆写完得了。二话不说，写吧！<br><a id="more"></a></p>
+<p>今年暑假系里给每个同学布置了一篇学年论文，就想着怎么也得弄点数据撑撑排面吧，一开始我是不想爬的，然后就在网上各种找接口，找了半天，不是不能用就是获取的数据只是实时的，无法获得历史数据，哎，既然没办法，就只能爬了，顺便就在一个群里问了一下端口的事，然后开始准备工作，等网页分析完了，开始敲代码的时候，又看了一下手机，有个道友说<code>tushare</code>里面有接口，虽然<code>tushare</code>用了也挺多次吧，但是没发现有汇率的接口啊，我又抱着希望去看了看，果不其然，还真有。但是回头一想，网页都分析完了，干脆写完得了。二话不说，写吧！</p>
 </blockquote>
+<a id="more"></a>
 <h4 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:UTF-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> xlrd</span><br><span class="line"><span class="keyword">from</span> xlutils.copy <span class="keyword">import</span> copy</span><br><span class="line">proxy = &#123;</span><br><span class="line">    <span class="string">'HTTP'</span>: <span class="string">'HTTP://180.125.70.78:9999'</span>,</span><br><span class="line">    <span class="string">'HTTP'</span>: <span class="string">'HTTP://117.90.4.230:9999'</span>,</span><br><span class="line">    <span class="string">'HTTP'</span>: <span class="string">'HTTP://111.77.196.229:9999'</span>,</span><br><span class="line">    <span class="string">'HTTP'</span>: <span class="string">'HTTP://111.177.183.57:9999'</span>,</span><br><span class="line">    <span class="string">'HTTP'</span>: <span class="string">'HTTP://123.55.98.146:9999'</span>,</span><br><span class="line">        &#125;</span><br><span class="line">row = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> n <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">50</span>):  <span class="comment">#  抓取页码范围</span></span><br><span class="line">    form_data = &#123;</span><br><span class="line">        <span class="string">'erectDate'</span>: <span class="string">'2009-07-01'</span>,</span><br><span class="line">        <span class="string">'nothing'</span>: <span class="string">'2019-07-08'</span>,</span><br><span class="line">        <span class="string">'pjname'</span>: <span class="string">'1316'</span>,  <span class="comment"># 美元兑人民币代码，修改此代码可获得其他货币兑人民币汇率</span></span><br><span class="line">        <span class="string">'page'</span>: n,</span><br><span class="line">    &#125;</span><br><span class="line">    url = <span class="string">'http://srh.bankofchina.com/search/whpj/search.jsp'</span></span><br><span class="line">    res = requests.post(url=url, data=form_data,proxies=proxy)</span><br><span class="line">    html = etree.HTML(res.text)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">2</span>, <span class="number">22</span>):</span><br><span class="line">        m_n = html.xpath(<span class="string">'//tr[&#123;&#125;]/td[1]/text()'</span>.format(j))</span><br><span class="line">        s_e_p = html.xpath(<span class="string">'//tr[&#123;&#125;]/td[2]/text()'</span>.format(j))</span><br><span class="line">        c_p = html.xpath(<span class="string">'//tr[&#123;&#125;]/td[3]/text()'</span>.format(j))</span><br><span class="line">        s_e_sp = html.xpath(<span class="string">'//tr[&#123;&#125;]/td[4]/text()'</span>.format(j))</span><br><span class="line">        c_s = html.xpath(<span class="string">'//tr[&#123;&#125;]/td[5]/text()'</span>.format(j))</span><br><span class="line">        bank_count_p = html.xpath(<span class="string">'//tr[&#123;&#125;]/td[6]/text()'</span>.format(j))</span><br><span class="line">        date = html.xpath(<span class="string">'//tr[&#123;&#125;]/td[7]/text()'</span>.format(j))</span><br><span class="line">        row = row + <span class="number">1</span></span><br><span class="line">        workbook = xlrd.open_workbook(<span class="string">'money.xls'</span>)  <span class="comment"># 创建工作表</span></span><br><span class="line">        workbook_copy = copy(workbook)  <span class="comment"># 向工作表内追加内容</span></span><br><span class="line">        worksheet = workbook_copy.get_sheet(<span class="number">0</span>)</span><br><span class="line">        worksheet.write(<span class="number">0</span>, <span class="number">0</span>, <span class="string">'货币名称'</span>)</span><br><span class="line">        worksheet.write(<span class="number">0</span>, <span class="number">1</span>, <span class="string">'现汇买入价'</span>)</span><br><span class="line">        worksheet.write(<span class="number">0</span>, <span class="number">2</span>, <span class="string">'现钞买入价'</span>)</span><br><span class="line">        worksheet.write(<span class="number">0</span>, <span class="number">3</span>, <span class="string">'现汇卖出价'</span>)</span><br><span class="line">        worksheet.write(<span class="number">0</span>, <span class="number">4</span>, <span class="string">'现钞卖出价'</span>)</span><br><span class="line">        worksheet.write(<span class="number">0</span>, <span class="number">5</span>, <span class="string">'中行折算价'</span>)</span><br><span class="line">        worksheet.write(<span class="number">0</span>, <span class="number">6</span>, <span class="string">'发布时间'</span>)</span><br><span class="line">        worksheet.write(row, <span class="number">0</span>, <span class="string">''</span>.join(m_n))  <span class="comment"># 将列表格式转换为字符串</span></span><br><span class="line">        worksheet.write(row, <span class="number">1</span>, <span class="string">''</span>.join(s_e_p))</span><br><span class="line">        worksheet.write(row, <span class="number">2</span>, <span class="string">''</span>.join(c_p))</span><br><span class="line">        worksheet.write(row, <span class="number">3</span>, <span class="string">''</span>.join(s_e_sp))</span><br><span class="line">        worksheet.write(row, <span class="number">4</span>, <span class="string">''</span>.join(c_s))</span><br><span class="line">        worksheet.write(row, <span class="number">5</span>, <span class="string">''</span>.join(bank_count_p))</span><br><span class="line">        worksheet.write(row, <span class="number">6</span>, <span class="string">''</span>.join(date))</span><br><span class="line">        workbook_copy.save(<span class="string">'money.xls'</span>)</span><br><span class="line">    print(<span class="string">'第&#123;&#125;页爬取完成...'</span>.format(n))</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>获取数据的界面<br><img src="https://img-blog.csdnimg.cn/20190709123228488.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQyNTc4NA==,size_16,color_FFFFFF,t_70" alt="图1"></p>
@@ -435,8 +440,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">仁义</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
-  </div>
 
     </div>
   </footer>
@@ -446,7 +449,7 @@
   <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
   <script>
 var pjax = new Pjax({
   selectors: [
@@ -498,6 +501,19 @@ document.addEventListener('pjax:success', () => {
 
 
 
+<script data-pjax>
+if (document.querySelectorAll('.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8.7.0/dist/mermaid.min.js', () => {
+    mermaid.init({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    }, '.mermaid');
+  }, window.mermaid);
+}
+</script>
 
 
   
@@ -561,5 +577,5 @@ document.addEventListener('pjax:success', () => {
   
 
     </div>
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":200,"height":400},"mobile":{"show":true},"react":{"opacity":0.8},"log":false});</script></body>
 </html>
