@@ -230,7 +230,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -288,6 +288,142 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhuhuaren.github.io/2021/02/03/dos-ming-ling/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="仁义">
+      <meta itemprop="description" content="Just Do It">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="仁义">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/03/dos-ming-ling/" class="post-title-link" itemprop="url">DOS命令</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-03 00:11:09" itemprop="dateCreated datePublished" datetime="2021-02-03T00:11:09+08:00">2021-02-03</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-02-02 23:43:15" itemprop="dateModified" datetime="2021-02-02T23:43:15+08:00">2021-02-02</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="常用DOS命令"><a href="#常用DOS命令" class="headerlink" title="常用DOS命令"></a>常用DOS命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令&#x2F;? # 获取命令参数说明</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">color 颜色属性 # 修改控制台字体颜色</span><br></pre></td></tr></table></figure>
+<p><img src="http://img.zhuhuaren.cn/img/color.png" alt="image-20210202222118196" style="zoom: 50%;" /></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ping -t -l 2 ip&#x2F;url #联通测试，</span><br><span class="line">-t:表示一直ping</span><br><span class="line">-l:发送包大小</span><br></pre></td></tr></table></figure>
+<p><img src="http://img.zhuhuaren.cn/img/ping.png" alt="image-20210202222455622" style="zoom:80%;" /></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ipconfig # 查看本机ip</span><br><span class="line">ipconfig &#x2F;release # 释放本机ip</span><br><span class="line">ipconfig &#x2F;renew # 重新获取ip</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysyeminfo # 获取本机信息</span><br></pre></td></tr></table></figure>
+<p><img src="http://img.zhuhuaren.cn/img/systeminfo.png" alt="image-20210202223314771" style="zoom:80%;" /></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arp # 显示和修改“地址解析协议（ARP）”缓存中的项目</span><br></pre></td></tr></table></figure>
+<p><img src="http://img.zhuhuaren.cn/img/arp.png" alt="image-20210202223745739" style="zoom: 80%;" /></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net view # 查看局域网内其他计算机的名称</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">shutdown -s -t 180 -c</span><br><span class="line">-s:表示关闭本地计算机</span><br><span class="line">-a:表示取消关机操作</span><br><span class="line">-f:强行关闭应用程序</span><br><span class="line">-m:计算机名：控制远程计算机</span><br><span class="line">-i:显示图形用户界面，但必须是Shutdown的第一个选项</span><br><span class="line">-l:注销当前用户</span><br><span class="line">-r:关机并重启</span><br><span class="line">-t:时间：设置关机倒计时</span><br><span class="line">-c:&quot;消息内容&quot;：输入关机对话框中的消息内容（不能超127个字符）</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dir #查看当前目录文件</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">start url&#x2F;文件名 #打开网页&#x2F;文件</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">copy con 文件名.拓展名 # 新建文件</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">md 文件名 # 新建文件夹</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rd 文件名 # 删除文件夹</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ren 原文件名 新文件名 # 修改文件夹名称</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">del 文件名 # 删除文件</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">copy 当前文件位置 目标位置 # 复制文件</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">move 当前文件位置 目标位置 # 移动文件</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tree # 列出当前文件夹树形结构</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">net use K:\\192.168.1.1\C$ # 将目标电脑C盘映射为本机K盘</span><br><span class="line">net use K:\\192.168.1.1\C$ del # 将目标电脑C与本机映射断开</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">net start # 查看开启了哪些服务</span><br><span class="line">net start 服务名称 # 开启服务</span><br><span class="line">net stop 服务名称 # 关闭服务</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">net user 用户名 密码 &#x2F;add # 建立新用户</span><br><span class="line">net user guest &#x2F;acyivate:yes # 激活guest用户</span><br><span class="line">net user # 查看有哪些用户</span><br><span class="line">net user 用户名 # 查看用户属性</span><br><span class="line">net user guest 密码 # 用guest用户登陆后将密码改为密码</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net localgroup admnistrators 用户名 &#x2F;add # 把用户添加到管理员用户组，使其具有管理员权限</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net password 密码 # 更改系统登陆密码</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">net share # 查看本地开启的共享</span><br><span class="line">net share ipc$ # 开启ipc$共享</span><br><span class="line">net share ipc$ &#x2F;del # 删除ipc$共享</span><br><span class="line">net share c$ &#x2F;del # 删除C:共享</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd\            # 退回到根目录</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exit           # 退出dos命令行</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ASSOC          # 显示或修改文件扩展名关联。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ATTRIB         # 显示或更改文件属性。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BREAK          # 设置或清除扩展式 CTRL+C 检查。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BCDEDIT        # 设置启动数据库中的属性以控制启动加载。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CACLS          # 显示或修改文件的访问控制列表(ACL)。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CALL           # 从另一个批处理程序调用这一个。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CD             # 显示当前目录的名称或将其更改。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CHCP           # 显示或设置活动代码页数。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CHDIR          # 显示当前目录的名称或将其更改。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CHKDSK         # 检查磁盘并显示状态报告。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CHKNTFS        # 显示或修改启动时间磁盘检查。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CLS            # 清除屏幕。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CMD            # 打开另一个 Windows 命令解释程序窗口。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COMP           # 比较两个或两套文件的内容。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COMPACT        # 显示或更改 NTFS 分区上文件的压缩。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONVERT        # 将 FAT 卷转换成 NTFS。你不能转换当前驱动器。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COPY           # 将至少一个文件复制到另一个位置。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DATE           # 显示或设置日期。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DISKPART       # 显示或配置磁盘分区属性。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DOSKEY         # 编辑命令行、撤回 Windows 命令并创建宏。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DRIVERQUERY    # 显示当前设备驱动程序状态和属性。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ECHO           # 显示消息，或将命令回显打开或关闭。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ENDLOCAL       # 结束批文件中环境更改的本地化。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ERASE          # 删除一个或多个文件。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXIT           # 退出 CMD.EXE 程序(命令解释程序)。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FC             # 比较两个文件或两个文件集并显示它们之间的不同。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FIND           # 在一个或多个文件中搜索一个文本字符串。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FINDSTR        # 在多个文件中搜索字符串。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FOR            # 为一组文件中的每个文件运行一个指定的命令。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FORMAT         # 格式化磁盘，以便用于 Windows。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FSUTIL         # 显示或配置文件系统属性。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FTYPE          # 显示或修改在文件扩展名关联中使用的文件类型。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br></pre></td><td class="code"><pre><span class="line">GOTO           # 将 Windows 命令解释程序定向到批处理程序中某个带标签的行。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">GPRESULT       # 显示计算机或用户的组策略信息。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">GRAFTABL       # 使 Windows 在图形模式下显示扩展字符集。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">HELP           # 提供 Windows 命令的帮助信息。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">ICACLS         # 显示、修改、备份或还原文件和目录的 ACL。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">IF             # 在批处理程序中执行有条件的处理操作。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">LABEL          # 创建、更改或删除磁盘的卷标。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">MD             # 创建一个目录。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">MKDIR          # 创建一个目录。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">MKLINK         # 创建符号链接和硬链接</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">MODE           # 配置系统设备。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">MORE           # 逐屏显示输出。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">MOVE           # 将一个或多个文件从一个目录移动到另一个目录。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">OPENFILES      # 显示远程用户为了文件共享而打开的文件。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">PATH           # 为可执行文件显示或设置搜索路径。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">PAUSE          # 暂停批处理文件的处理并显示消息。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">POPD           # 还原通过 PUSHD 保存的当前目录的上一个值。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">PRINT          # 打印一个文本文件。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">PROMPT         # 更改 Windows 命令提示。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">PUSHD          # 保存当前目录，然后对其进行更改。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">RECOVER        # 从损坏的或有缺陷的磁盘中恢复可读信息。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">REM            # 记录批处理文件或 CONFIG.SYS 中的注释(批注)。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">REPLACE        # 替换文件。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">RMDIR          # 删除目录。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">ROBOCOPY       # 复制文件和目录树的高级实用工具</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">SET            # 显示、设置或删除 Windows 环境变量。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">SETLOCAL       # 开始本地化批处理文件中的环境更改。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">SC             # 显示或配置服务(后台进程)。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">SCHTASKS       # 安排在一台计算机上运行命令和程序。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">SHIFT          # 调整批处理文件中可替换参数的位置。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">SORT           # 对输入排序</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">SUBST          # 将路径与驱动器号关联。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">TASKLIST       # 显示包括服务在内的所有当前运行的任务。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">TASKKILL       # 中止或停止正在运行的进程或应用程序。</span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;</span><br><span class="line">TIME           # 显示或设置系统时间。</span><br><span class="line">&#96;&#96;&#96;</span><br></pre></td></tr></table></figure>
+<p>TITLE          # 设置 CMD.EXE 会话的窗口标题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><br>TYPE           # 显示文本文件的内容。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><br>VER            # 显示 Windows 的版本。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><br>VERIFY         # 告诉 Windows 是否进行验证，以确保文件正确写入磁盘。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><br>VOL            # 显示磁盘卷标和序列号。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><br>XCOPY          # 复制文件和目录树。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><br>WMIC           # 在交互式命令 shell 中显示 WMI 信息。<br>```</p>
+<blockquote>
+<p>没什么事可以在机器上试试这些命令，不建议在物理机上试:smile:</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://zhuhuaren.github.io/2020/09/02/fa-bu-zheng-quan-yan-jiu-bao-gao-ye-wu-kao-shi/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -323,7 +459,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-02-02 05:33:32" itemprop="dateModified" datetime="2021-02-02T05:33:32+08:00">2021-02-02</time>
+        <time title="修改时间：2021-02-02 21:48:28" itemprop="dateModified" datetime="2021-02-02T21:48:28+08:00">2021-02-02</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -345,10 +481,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>这是描述。</p>
+          <p>卧槽！</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/09/02/fa-bu-zheng-quan-yan-jiu-bao-gao-ye-wu-kao-shi/">
+              <a class="btn" href="/2020/09/02/fa-bu-zheng-quan-yan-jiu-bao-gao-ye-wu-kao-shi/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -409,7 +545,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-02-02 04:24:58" itemprop="dateModified" datetime="2021-02-02T04:24:58+08:00">2021-02-02</time>
+        <time title="修改时间：2021-02-02 21:55:45" itemprop="dateModified" datetime="2021-02-02T21:55:45+08:00">2021-02-02</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -431,7 +567,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><img src="http://img.zhuhuaren.cn/img/wallhaven-z8x27v.jpg" alt="" style="zoom: 67%;" /></p>
+          <p><img src="http://img.zhuhuaren.cn/img/wallhaven-z8x27v.jpg" alt="" style="zoom: 33%;" /></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/08/30/ji-liang-jing-ji-xue-an-li/#more" rel="contents">
